@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -64,13 +65,47 @@ const theme = createTheme({
 });
 
 function App() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const navItems = [
+    { text: 'Home', path: '/' },
+    { text: 'About Us', path: '/about' },
+    { text: 'Products', path: '/products' },
+    { text: 'Quality', path: '/quality' },
+    { text: 'Contact Us', path: '/contact' },
+  ];
+
+  const drawer = (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
+        {navItems.map((item) => (
+          <ListItem button key={item.text} component={RouterLink} to={item.path}>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <AppBar position="static" sx={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0' }}>
-            <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'center', py: 2 }}>
-              <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main, position: 'absolute', left: 0 }}>
+            <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 2 }}>
+              <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main }}>
                 <Box
                   component="img"
                   sx={{
@@ -82,15 +117,30 @@ function App() {
                 />
               </Typography>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <Button sx={{ color: theme.palette.primary.main }} component={RouterLink} to="/">Home</Button>
-                <Button sx={{ color: theme.palette.primary.main }} component={RouterLink} to="/about">About Us</Button>
-                <Button sx={{ color: theme.palette.primary.main }} component={RouterLink} to="/products">Products</Button>
-                <Button sx={{ color: theme.palette.primary.main }} component={RouterLink} to="/quality">Quality</Button>
-                <Button sx={{ color: theme.palette.primary.main }} component={RouterLink} to="/contact">Contact Us</Button>
+                {navItems.map((item) => (
+                  <Button key={item.text} sx={{ color: theme.palette.primary.main }} component={RouterLink} to={item.path}>
+                    {item.text}
+                  </Button>
+                ))}
               </Box>
-              {/* Mobile menu would go here */}
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="end"
+                onClick={toggleDrawer(true)}
+                sx={{ display: { md: 'none' }, color: theme.palette.primary.main }}
+              >
+                <MenuIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
+          <Drawer
+            anchor="right"
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+          >
+            {drawer}
+          </Drawer>
           <Box component="main" sx={{ flexGrow: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />
