@@ -11,13 +11,13 @@ function Footer() {
       sx={{
         backgroundColor: "grey.900",
         color: "white",
-        py: 2, // Further reduced padding
+        py: 1, // Further reduced padding
         borderTop: "1px solid",
         borderColor: "grey.800",
       }}
     >
       <Container maxWidth="lg">
-        <Box textAlign="center" mb={1}> {/* Further reduced margin-bottom */}
+        <Box textAlign="center" mb={0.5}> {/* Further reduced margin-bottom */}
           <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold", color: "white", fontFamily: "Montserrat, sans-serif", textTransform: "uppercase" }}>
             Shalaka Wires LLP
           </Typography>
@@ -26,14 +26,14 @@ function Footer() {
           </Typography>
         </Box>
 
-        <Divider sx={{ bgcolor: "grey.700", mb: 2 }} />
+        <Divider sx={{ bgcolor: "grey.700", mb: 1 }} /> {/* Reduced margin-bottom */}
 
-        <Grid container spacing={4} justifyContent="space-around">
+        <Grid container spacing={2} justifyContent="space-around"> {/* Reduced spacing */}
           <Grid item xs={12} md={3}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
               Quick Links
             </Typography>
-            <Stack spacing={1} mt={2}>
+            <Stack spacing={0.5} mt={1}> {/* Reduced spacing and margin-top */}
               <Link component={RouterLink} to="/" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                 <HomeIcon sx={{ mr: 1, fontSize: 18 }} /> Home
               </Link>
@@ -56,14 +56,14 @@ function Footer() {
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
               Contact Us
             </Typography>
-            <Stack spacing={1} mt={2}>
+            <Stack spacing={0.5} mt={1}> {/* Reduced spacing and margin-top */}
               <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
                 <Email sx={{ mr: 1, fontSize: 18 }} /> shalakawires@gmail.com
               </Typography>
               <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
                 <Phone sx={{ mr: 1, fontSize: 18 }} /> +91 98227 67618, +91 91587 24723
               </Typography>
-              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'flex-start', mt: 1 }}>
+              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'flex-start', mt: 0.5 }}> {/* Reduced margin-top */}
                 <LocationOn sx={{ mr: 1, fontSize: 18 }} /> <b>Factory Address:</b> Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
               </Typography>
             </Stack>
@@ -73,7 +73,7 @@ function Footer() {
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
               Follow Us
             </Typography>
-            <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
+            <Stack direction="row" spacing={1} sx={{ mt: 1 }}> {/* Reduced margin-top */}
               <IconButton
                 href="https://www.facebook.com/shalakawires"
                 target="_blank"
@@ -110,7 +110,7 @@ function Footer() {
           </Grid>
         </Grid>
 
-        <Box mt={2} textAlign="center"> {/* Further reduced margin-top */}
+        <Box mt={1} textAlign="center"> {/* Further reduced margin-top */}
           <Typography variant="body2" sx={{ color: "grey.500" }}>
             © {new Date().getFullYear()} Shalaka Wires LLP. All rights reserved.
           </Typography>

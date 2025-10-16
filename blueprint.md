@@ -1,19 +1,55 @@
-# Shalaka Wires LLP Website Blueprint
+# Project Blueprint
 
-## Project Overview
-This project aims to create a modern, responsive, and user-friendly website for Shalaka Wires LLP, a manufacturer of MS wire products. The website will showcase the company's products and provide essential information to potential clients.
+## Overview
+This document outlines the current state and planned improvements for the React application. The goal is to enhance performance, accessibility, and SEO based on recent Lighthouse audit findings, while adhering to modern React practices.
 
-## Features
-*   **Home Page:** Introduction to Shalaka Wires LLP, highlights of products, and key company information.
-*   **About Us Page:** Detailed company history, mission, vision, values, and a section on the manufacturing plant with descriptions and photos of various machines.
-*   **Products Page:** Comprehensive listing and description of MS wire products (binding wire, MS wire nails, GI wire, chain link, mesh, etc.). Now includes image carousels for products with multiple images.
-*   **Contact Us Page:** Contact form, company address, phone number, and email.
-*   **Navigation:** Intuitive navigation bar for easy access to all pages.
-*   **Quality Page:** Information about the company's commitment to quality with a relevant image and a table of MS Wire Sizes & Tolerance.
+## Detailed Outline of Application Features and Styles
 
-## Plan for current change
-*   **Integrate Image Carousels in About Us Page:**
-    *   Import `Carousel` component from `react-responsive-carousel`.
-    *   For machines with multiple images, replace `CardMedia` with `Carousel`.
-    *   Inside `Carousel`, dynamically render `img` tags for each image.
-    *   Configure `Carousel` for auto-play, infinite loop, and a 3-second interval.
+### Initial Structure
+The application is a React project initialized with Vite. It features a multi-page structure with routing for Home, About, Contact, Products, and Quality pages. Styling is likely handled through CSS modules or direct CSS imports.
+
+### Styling
+The application uses a combination of global CSS (`src/index.css`, `src/App.css`) and potentially inline styles or component-specific CSS. Components like `Footer.jsx` and various page components (`About.jsx`, `Contact.jsx`, etc.) contribute to the overall UI.
+
+### Navigation
+The application uses `react-router-dom` for navigation between pages (Home, About, Contact, Products, Quality).
+
+### Image Usage
+The application utilizes images for product displays and plant visuals, stored in `public/plant-images/` and `public/product-images/`.
+
+## Plan for Current Requested Change: Lighthouse Audit Remediation
+
+The following steps will be taken to address the issues identified in the Lighthouse audit:
+
+### 1. Performance Optimization
+*   **Image Optimization:** Resize and convert existing images to WebP format for improved loading times and reduced network payload. Implement lazy loading for offscreen images.
+*   **Component Lazy Loading:** Implement `React.lazy` and `Suspense` for page components to reduce initial JavaScript bundle size and improve First Contentful Paint (FCP) and Largest Contentful Paint (LCP).
+*   **Minify JavaScript/CSS:** Ensure Vite's build process is configured for optimal minification and tree-shaking.
+*   **Address Render-Blocking Resources:** Investigate and optimize CSS and JavaScript loading to prevent render-blocking.
+
+### 2. Accessibility Improvements
+*   **Descriptive Links:** Ensure all `<a>` tags have discernible names (either through visible text or `aria-label`).
+*   **Meaningful Alt Text:** Review and refine `alt` attributes for all `<img>` tags to be descriptive and non-redundant.
+*   **Semantic HTML for Lists:** Verify that `<ul>` and `<ol>` elements contain only `<li>` elements or script-supporting elements.
+*   **Touch Target Size:** Review interactive elements to ensure they have sufficient size and spacing for touch interactions.
+*   **Heading Hierarchy:** Correct the sequential order of heading elements (`<h1>` through `<h6>`).
+*   **Correct ARIA Usage:** Ensure ARIA roles are used on compatible elements.
+
+### 3. Best Practices & Security
+*   **HTTPS Enforcement:** Check for and update any hardcoded `http://` links to `https://`. While server-side configuration is primary, client-side consistency is important.
+*   **Console Errors:** Address any browser errors logged to the console during development.
+
+### 4. SEO Enhancements
+*   **Meta Description:** Add a default meta description to `index.html` and consider dynamic meta descriptions for individual pages.
+*   **Valid robots.txt:** Create or correct a `robots.txt` file in the public directory to properly guide crawlers.
+
+## Actionable Steps:
+
+1.  **Image Optimization Script/Manual:** (Detailed steps to follow in subsequent actions)
+2.  **Modify `src/main.jsx` for Lazy Loading.**
+3.  **Review and Update Components for Accessibility.**
+4.  **Update `index.html` for Meta Description.**
+5.  **Create `public/robots.txt`.**
+6.  **Review all files for `http://` links.**
+
+This blueprint will be updated as changes are implemented and further issues are identified or resolved.

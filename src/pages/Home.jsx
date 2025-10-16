@@ -187,6 +187,7 @@ function Home() {
                   }}
                   image={product.image}
                   alt={product.name}
+                  loading="lazy"
                 />
                 <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
                   <Typography gutterBottom variant="h6" component="h2" textAlign="center">
@@ -249,6 +250,7 @@ function Home() {
                             }}
                             image={image}
                             alt={`${machine.title} ${imgIndex + 1}`}
+                            loading="lazy"
                         />
                     ))}
                 </Carousel>
