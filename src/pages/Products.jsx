@@ -5,7 +5,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carous
 
 const products = [
   { 
-    name: 'Black Binding Wire', 
+    name: 'Binding Wire', 
     images: ['/product-images/binding-wire.png'] 
   },
   { name: 'MS Wire Nails', images: ['/product-images/ms-nails.png'] },

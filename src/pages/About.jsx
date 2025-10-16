@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useLocation } from 'react-router-dom';
 
 function About() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const keyMachinesRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#key-machines' && keyMachinesRef.current) {
+      keyMachinesRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
 
   const plantImages = {
     SLM: {
@@ -56,7 +65,7 @@ function About() {
         <p>Our product portfolio includes binding wire, MS wire nails, GI wire, chain link, mesh, and various other customized wire solutions.</p>
       </div>
 
-      <div style={{ margin: '3rem 0' }}>
+      <div style={{ margin: '3rem 0' }} ref={keyMachinesRef} id="key-machines">
         <h2 style={{ textAlign: 'center', color: '#005a9e' }}>Key Machines in Our Production Process</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1rem' }}>
           {Object.keys(plantImages).map((machine) => (

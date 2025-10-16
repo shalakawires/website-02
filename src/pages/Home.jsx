@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Container, Button, Card, CardMedia, CardContent } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Typography, Container, Card, CardMedia, CardContent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
@@ -32,16 +32,51 @@ const featuredProducts = [
   },
 ];
 
+const plantImages = {
+    SLM: {
+      title: "SLM",
+      images: ["/plant-images/SLM-1.jpg", "/plant-images/SLM-2.jpg", "/plant-images/SLM-3.jpg"],
+    },
+    FineWireDrawingOTO: {
+      title: "Fine Wire Drawing OTO",
+      images: ["/plant-images/Fine Wire Drawing OTO - 1.jpg", "/plant-images/Fine Wire Drawing OTO - 2.jpg", "/plant-images/Fine Wire Drawing OTO - 3.jpg"],
+    },
+    PitTypeInductionFurnace: {
+      title: "Pit Type Induction Furnace",
+      images: ["/plant-images/Induction Furnace - 1.jpg", "/plant-images/Induction Furnace - 2.jpg"],
+    },
+    NitrogenFurnace: {
+      title: "Nitrogen Furnace",
+      images: ["/plant-images/Nitrogen Furnace - 1.jpg"],
+    },
+    HighSpeedNailMachine: {
+      title: "High Speed Nail Machine",
+      images: ["/plant-images/High Speed Nail Machine - 1.jpg"],
+    },
+    AutomaticChainLinkFencingMachine: {
+      title: "Automatic Chain Link Fencing Machine",
+      images: ["/plant-images/Automatic Chain Link Fencing Machine - 1.jpg"],
+    },
+  };
+
 function Home() {
   const featuredProductsRef = useRef(null);
+  const navigate = useNavigate();
+  const machines = Object.values(plantImages);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      featuredProductsRef.current.scrollIntoView({ behavior: 'smooth' });
+      if(featuredProductsRef.current) {
+        featuredProductsRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleTitleClick = () => {
+    navigate('/about#key-machines');
+  };
 
   return (
     <Box>
@@ -127,7 +162,7 @@ function Home() {
           interval={3000}
           centerMode={true}
           centerSlidePercentage={33.33}
-          stopOnHover={false}
+          stopOnHover={true}
           transitionTime={1000}
         >
           {featuredProducts.map((product) => (
@@ -153,12 +188,69 @@ function Home() {
         </Carousel>
       </Container>
       
-      {/* Explore Products Button */}
-      <Box sx={{ textAlign: 'center', py: 4 }}>
-        <Button variant="contained" color="primary" size="large" component={Link} to="/products">
-          Explore Our Products
-        </Button>
-      </Box>
+      {/* Key Machines Section */}
+      <Container sx={{ py: 8 }} maxWidth="lg">
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer' }}
+          onClick={handleTitleClick}
+        >
+          Key Machines in Our Production Process
+        </Typography>
+        <Carousel
+          showArrows={true}
+          infiniteLoop={true}
+          showThumbs={false}
+          showStatus={false}
+          autoPlay={true}
+          interval={5000}
+          centerMode={true}
+          centerSlidePercentage={33.33}
+          stopOnHover={true}
+          transitionTime={1000}
+        >
+          {machines.map((machine) => (
+            <Box key={machine.title} sx={{ p: 2 }}>
+              <Card
+                sx={{ height: 300, display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' }, cursor: 'pointer' }}
+                onClick={handleTitleClick}
+              >
+                <Carousel
+                    showArrows={false}
+                    showThumbs={false}
+                    showStatus={false}
+                    infiniteLoop={true}
+                    autoPlay={true}
+                    interval={4000}
+                    showIndicators={false}
+                    stopOnHover={true}
+                    transitionTime={500}
+                >
+                    {machine.images.map((image, imgIndex) => (
+                        <CardMedia
+                            key={imgIndex}
+                            component="img"
+                            sx={{
+                                height: 250,
+                                objectFit: 'cover',
+                            }}
+                            image={image}
+                            alt={`${machine.title} ${imgIndex + 1}`}
+                        />
+                    ))}
+                </Carousel>
+                <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+                  <Typography gutterBottom variant="h6" component="h2" textAlign="center">
+                    {machine.title}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+        </Carousel>
+      </Container>
     </Box>
   );
 }
