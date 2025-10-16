@@ -12,6 +12,9 @@ function Contact() {
       <Typography variant="h3" component="h1" gutterBottom textAlign="center">
         Contact Us
       </Typography>
+      <Typography variant="body1" textAlign="center" sx={{ mb: 4 }}>
+        For any queries or purchasing our product, contact us through the details below.
+      </Typography>
       <Grid container spacing={4} sx={{ mt: 3 }} justifyContent="center">
         <Grid item xs={12} md={8}>
           <Paper elevation={3} sx={{ p: 4, display: 'flex', flexDirection: 'column' }}>

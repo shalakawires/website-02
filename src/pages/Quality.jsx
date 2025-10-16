@@ -18,7 +18,7 @@ function Quality() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Box sx={{ my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'primary.main' }}>
           Our Commitment to Quality
         </Typography>
         <Typography variant="body1" paragraph>
@@ -54,7 +54,7 @@ function Quality() {
           </Grid>
         </Grid>
 
-        <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4, color: 'primary.main', textAlign: 'center', fontWeight: 'bold' }}>
           MS Wire Sizes Specifications & Tolerance
         </Typography>
         <TableContainer component={Paper} sx={{ mt: 2 }}>

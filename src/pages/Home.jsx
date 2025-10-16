@@ -27,7 +27,7 @@ const featuredProducts = [
     image: '/product-images/MS-weld-mesh.jpg',
   },
   {
-    name: 'Binding Wire',
+    name: 'MS Binding Wire',
     image: '/product-images/binding-wire.png',
   },
 ];
