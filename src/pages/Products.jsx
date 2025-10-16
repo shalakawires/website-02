@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
 const products = [
-  { name: 'MS Wire', images: ['/product-images/binding wire-2.png']  },
+  { name: 'MS Binding Wire', images: ['/product-images/binding wire-2.png']  },
   { name: 'Black Annealed Wire', images: ['/product-images/binding-wire.png'] },
   { name: 'MS Wire Nails', images: ['/product-images/ms-nails.png'] },
   { name: 'Galvanized Wire', images: ['/product-images/GI-wire.png'] },

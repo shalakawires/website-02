@@ -18,19 +18,19 @@ function Quality() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Box sx={{ my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'primary.main' }}>
+        <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'primary.main', textAlign: 'center' }}>
           Our Commitment to Quality
         </Typography>
-        <Typography variant="body1" paragraph>
+        <Typography variant="body1" paragraph textAlign="justify">
           At Shalaka Wires LLP, quality is at the forefront of everything we do. We are committed to manufacturing and delivering
           high-quality wires and cables that meet and exceed industry standards, as well as our customers' expectations.
         </Typography>
-        <Typography variant="body1" paragraph>
+        <Typography variant="body1" paragraph textAlign="justify">
           Our rigorous quality control processes are integrated throughout every stage of production, from the selection of
           raw materials to the final inspection of finished products. We utilize advanced testing equipment and adhere to
           strict protocols to ensure the reliability, durability, and safety of our products.
         </Typography>
-        <Typography variant="body1" paragraph>
+        <Typography variant="body1" paragraph textAlign="justify">
           We continuously invest in research and development to innovate and improve our manufacturing techniques and product
           offerings. Our dedicated team of experts is passionate about maintaining the highest levels of craftsmanship and
           attention to detail, ensuring that every product bearing the Shalaka Wires LLP name is a testament to our

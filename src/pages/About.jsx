@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useLocation } from 'react-router-dom';
+import { Container, Box, Typography } from '@mui/material'; // Import Container, Box, and Typography
 
 function About() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -58,12 +59,14 @@ function About() {
 
   return (
     <div>
-      <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <h1 style={{color: '#005a9e'}}>About Us</h1>
-        <p>Shalaka Wires LLP is a leading manufacturer of high-quality MS wire products. With years of experience in the industry, we are committed to providing our customers with superior products and excellent service.</p>
-        <p>Our mission is to be a reliable partner for our clients, offering a diverse range of wire products that meet stringent quality standards. We believe in innovation, customer satisfaction, and sustainable practices.</p>
-        <p>Our product portfolio includes binding wire, MS wire nails, GI wire, chain link, mesh, and various other customized wire solutions.</p>
-      </div>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Box sx={{ my: 4, textAlign: 'center' }}>
+          <Typography variant="h2" component="h1" gutterBottom sx={{ color: '#005a9e' }}>About Us</Typography>
+          <Typography variant="body1" paragraph textAlign="justify">Shalaka Wires LLP is a leading manufacturer of high-quality MS wire products. With years of experience in the industry, we are committed to providing our customers with superior products and excellent service.</Typography>
+          <Typography variant="body1" paragraph textAlign="justify">Our mission is to be a reliable partner for our clients, offering a diverse range of wire products that meet stringent quality standards. We believe in innovation, customer satisfaction, and sustainable practices.</Typography>
+          <Typography variant="body1" paragraph textAlign="justify">Our product portfolio includes binding wire, MS wire nails, GI wire, chain link, mesh, and various other customized wire solutions.</Typography>
+        </Box>
+      </Container>
 
       <div style={{ margin: '3rem 0' }} ref={keyMachinesRef} id="key-machines">
         <h2 style={{ textAlign: 'center', color: '#005a9e' }}>Key Machines in Our Production Process</h2>
@@ -90,11 +93,13 @@ function About() {
           ))}
         </div>
       </div>
-      <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <h2 style={{'color':'#2E8B57', 'fontSize':'2rem', 'fontWeight':'bold'}}>Our Green Energy Commitment</h2>
-        <p style={{'color':'#555', 'fontSize':'1.1rem', 'lineHeight':'1.6'}}>At Shalaka Wires, we believe that industrial growth must go hand-in-hand with environmental responsibility. In line with India’s ambitious green energy initiatives and the national goal of achieving net-zero carbon emissions by 2070, we are proud to announce the installation of a rooftop solar power plant at our facility. This step significantly reduces our carbon footprint and supports the transition to renewable energy sources. By embracing solar energy, we are not only lowering our carbon emissions but also contributing to a cleaner, more sustainable future for generations to come.</p>
-        <img src="/plant-images/Solar Rooftop - 1.jpg" alt="Solar Rooftop" style={{ width: '40%', marginTop: '2rem', borderRadius: '8px' }} />
-      </div>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Box sx={{ my: 4, textAlign: 'center' }}>
+          <Typography variant="h2" component="h2" gutterBottom sx={{'color':'#2E8B57', 'fontSize':'2rem', 'fontWeight':'bold'}}>Our Green Energy Commitment</Typography>
+          <Typography variant="body1" paragraph textAlign="justify" sx={{'color':'#555', 'fontSize':'1.1rem', 'lineHeight':'1.6'}}>At Shalaka Wires, we believe that industrial growth must go hand-in-hand with environmental responsibility. In line with India’s ambitious green energy initiatives and the national goal of achieving net-zero carbon emissions by 2070, we are proud to announce the installation of a rooftop solar power plant at our facility. This step significantly reduces our carbon footprint and supports the transition to renewable energy sources. By embracing solar energy, we are not only lowering our carbon emissions but also contributing to a cleaner, more sustainable future for generations to come.</Typography>
+          <img src="/plant-images/Solar Rooftop - 1.jpg" alt="Solar Rooftop" style={{ width: '40%', marginTop: '2rem', borderRadius: '8px' }} />
+        </Box>
+      </Container>
     </div>
   );
 }

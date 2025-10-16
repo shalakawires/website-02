@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const featuredProducts = [
   {
-    name: 'MS Wire',
+    name: 'MS Binding Wire',
     image: '/product-images/binding wire-2.png',
   },
   {
@@ -161,7 +161,7 @@ function Home() {
 
       {/* Featured Products Section */}
       <Container sx={{ py: 8 }} maxWidth="lg" ref={featuredProductsRef}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 6 }}>
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 6, color: '#005a9e' }}>
           Featured Products
         </Typography>
         <Carousel
@@ -205,7 +205,7 @@ function Home() {
           variant="h4"
           align="center"
           gutterBottom
-          sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer' }}
+          sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer', color: '#005a9e' }}
           onClick={handleTitleClick}
         >
           Key Machines in Our Production Process
