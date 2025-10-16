@@ -17,6 +17,9 @@ The application uses `react-router-dom` for navigation between pages (Home, Abou
 ### Image Usage
 The application utilizes images for product displays and plant visuals, stored in `public/plant-images/` and `public/product-images/`.
 
+### Sitemap
+A `sitemap.xml` file has been created in the `public` directory. The content has been updated to reflect a simpler structure with only the main domain `https://www.shalakawires.com/` as requested by the user. This is to aid search engine crawling and indexing.
+
 ## Plan for Current Requested Change: Lighthouse Audit Remediation
 
 The following steps will be taken to address the issues identified in the Lighthouse audit:
@@ -51,5 +54,16 @@ The following steps will be taken to address the issues identified in the Lighth
 4.  **Update `index.html` for Meta Description.**
 5.  **Create `public/robots.txt`.**
 6.  **Review all files for `http://` links.**
+
+## Known Issues and Resolutions
+
+### Sitemap "Couldn't fetch" Error
+The "Couldn't fetch" error reported in Google Search Console for the `sitemap.xml` is typically not an issue with the sitemap file's content itself. The sitemap is correctly formatted.
+
+**To resolve this, please check the following Firebase App Hosting domain configurations:**
+
+*   **DNS Records Propagation:** Verify that your DNS A records have propagated correctly from your domain name provider to Firebase App Hosting servers. This can sometimes take up to 24 hours. Ensure your records are pointed to Firebase App Hosting as per their instructions.
+*   **Invalid Challenge Code:** If using the Advanced Setup flow and migration failed, your token (and its challenge code) might be invalid. Go to your Firebase console, view the domain, and provide the new token to your existing domain.
+*   **Too Many Subdomains:** Firebase Hosting generally recommends no more than 20 subdomains on one apex custom domain due to SSL certificate minting limits. If you have many subdomains, review this limitation.
 
 This blueprint will be updated as changes are implemented and further issues are identified or resolved.
