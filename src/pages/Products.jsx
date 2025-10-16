@@ -4,28 +4,28 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
 const products = [
-  { 
-    name: 'MS Binding Wire', 
-    images: ['/product-images/binding-wire.png'] 
-  },
+  { name: 'MS Wire', images: ['/product-images/binding wire-2.png']  },
+  { name: 'Black Annealed Wire', images: ['/product-images/binding-wire.png'] },
   { name: 'MS Wire Nails', images: ['/product-images/ms-nails.png'] },
-  { name: 'GI Wire', images: ['/product-images/GI-wire.png'] },
+  { name: 'Galvanized Wire', images: ['/product-images/GI-wire.png'] },
   { name: 'Chain Link Fence', images: ['/product-images/chain link.png'] },
   { name: 'Barbed Wire', images: ['/product-images/barbed-wire.png'] },
   { name: 'MS Weld Mesh', images: ['/product-images/MS-weld-mesh.jpg'] },
+  { name: 'Fine Galvanized Wire', images: ['/product-images/fine-GI-wire.jpg'] },
+  { name: 'HB Wire', images: ['/product-images/HB-wire.jpg'] },
 ];
 
 function Products() {
   return (
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
-        <Typography variant="h3" component="h1" gutterBottom textAlign="center">
+        <Typography variant="h3" component="h1" gutterBottom textAlign="center" color="primary">
           Our Products
         </Typography>
         <Grid container spacing={4}> 
           {products.map((product, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}> 
-              <Card sx={{ height: 300, width: '100%', display: 'flex', flexDirection: 'column' }}> 
+              <Card sx={{ height: 300, width: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}> 
                 {product.images.length > 1 ? (
                   <Carousel 
                     showArrows={true} 

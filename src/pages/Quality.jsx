@@ -6,13 +6,13 @@ function Quality() {
   const theme = useTheme();
 
   const specifications = [
-    { swg: 9, mm: 3.60, from: 3.55, to: 3.65, tolerance: 0.05 },
-    { swg: 10, mm: 3.25, from: 3.20, to: 3.30, tolerance: 0.05 },
-    { swg: 12, mm: 2.64, from: 2.59, to: 2.69, tolerance: 0.05 },
-    { swg: 14, mm: 2.03, from: 1.99, to: 2.07, tolerance: 0.04 },
-    { swg: 16, mm: 1.62, from: 1.58, to: 1.66, tolerance: 0.04 },
-    { swg: 18, mm: 1.21, from: 1.18, to: 1.24, tolerance: 0.03 },
-    { swg: 20, mm: 0.91, from: 0.89, to: 0.93, tolerance: 0.02 },
+    { swg: 9, mm: 3.60, tolerance: 0.05 },
+    { swg: 10, mm: 3.25, tolerance: 0.05 },
+    { swg: 12, mm: 2.64, tolerance: 0.05 },
+    { swg: 14, mm: 2.03, tolerance: 0.04 },
+    { swg: 16, mm: 1.62, tolerance: 0.04 },
+    { swg: 18, mm: 1.21, tolerance: 0.03 },
+    { swg: 20, mm: 0.91, tolerance: 0.02 },
   ];
 
   return (
@@ -57,36 +57,34 @@ function Quality() {
         <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4, color: 'primary.main', textAlign: 'center', fontWeight: 'bold' }}>
           MS Wire Sizes Specifications & Tolerance
         </Typography>
-        <TableContainer component={Paper} sx={{ mt: 2 }}>
-          <Table sx={{ minWidth: 650 }} aria-label="MS Wire Specifications Table">
-            <TableHead>
-              <TableRow>
-                <TableCell colSpan={4} align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}><b>Size</b></TableCell>
-                <TableCell colSpan={1} align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}><b>Tolerance (As per IS 280 : 2006)</b></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>SWG</TableCell>
-                <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>mm</TableCell>
-                <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>From (mm)</TableCell>
-                <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>To (mm)</TableCell>
-                <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>±mm</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {specifications.map((row, index) => (
-                <TableRow key={row.swg} sx={{ bgcolor: index % 2 === 0 ? 'action.hover' : 'background.paper' }}>
-                  <TableCell component="th" scope="row" align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>
-                    {row.swg}
-                  </TableCell>
-                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>{row.mm}</TableCell>
-                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>{row.from}</TableCell>
-                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>{row.to}</TableCell>
-                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>{row.tolerance}</TableCell>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <TableContainer component={Paper} sx={{ mt: 2, maxWidth: 500 }}>
+            <Table aria-label="MS Wire Specifications Table">
+              <TableHead>
+                <TableRow>
+                  <TableCell colSpan={2} align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}><b>Size</b></TableCell>
+                  <TableCell colSpan={1} align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}><b>Tolerance (As per IS 280 : 2006)</b></TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                <TableRow>
+                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>SWG</TableCell>
+                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>mm</TableCell>
+                  <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText, fontSize: '1.1rem' }}>±mm</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {specifications.map((row, index) => (
+                  <TableRow key={row.swg} sx={{ bgcolor: index % 2 === 0 ? 'action.hover' : 'background.paper' }}>
+                    <TableCell component="th" scope="row" align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>
+                      {row.swg}
+                    </TableCell>
+                    <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>{row.mm}</TableCell>
+                    <TableCell align="center" sx={{ border: '1px solid rgba(224, 224, 224, 1)', fontSize: '1.0rem' }}>{row.tolerance}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
 
       </Box>
     </Container>

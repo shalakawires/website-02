@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Container, Card, CardMedia, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -7,15 +6,23 @@ import { Carousel } from 'react-responsive-carousel';
 
 const featuredProducts = [
   {
-    name: 'GI Wire',
+    name: 'MS Wire',
+    image: '/product-images/binding wire-2.png',
+  },
+  {
+    name: 'Black Annealed Wire',
+    image: '/product-images/binding-wire.png',
+  },
+  {
+    name: 'Galvanized Wire',
     image: '/product-images/GI-wire.png',
   },
   {
-    name: 'MS Nails',
+    name: 'MS Wire Nails',
     image: '/product-images/ms-nails.png',
   },
   {
-    name: 'Chain Link',
+    name: 'Chain Link Fence',
     image: '/product-images/chain link.png',
   },
   {
@@ -27,8 +34,12 @@ const featuredProducts = [
     image: '/product-images/MS-weld-mesh.jpg',
   },
   {
-    name: 'MS Binding Wire',
-    image: '/product-images/binding-wire.png',
+    name: 'Fine Galvanized Wire',
+    image: '/product-images/fine-GI-wire.jpg',
+  },
+  {
+    name: 'HB Wire',
+    image: '/product-images/HB-wire.jpg',
   },
 ];
 
