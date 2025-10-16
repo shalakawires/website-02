@@ -86,7 +86,7 @@ function Home() {
           py: 12,
           textAlign: 'center',
           position: 'relative',
-          minHeight: '45vh',
+          minHeight: '25vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

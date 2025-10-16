@@ -49,7 +49,7 @@ function Quality() {
               />
             </Card>
             <Typography variant="body2" display="block" align="center" sx={{ mt: 1, color: 'text.secondary', fontSize: '1.1rem' }}>
-              Advanced Universal Testing Machine ensuring quality and durability
+            Advanced Universal Testing Machine, ensuring quality and durability
             </Typography>
           </Grid>
         </Grid>
