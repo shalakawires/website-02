@@ -121,14 +121,14 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <Container sx={{ py: 8 }}>
+      <Container sx={{ py: 4 }}>
         <Typography variant="h4" align="center">Product not found</Typography>
       </Container>
     );
   }
 
   return (
-    <Container sx={{ py: 8 }}>
+    <Container sx={{ py: 4 }}>
       <Paper sx={{ p: 4, backgroundColor: '#f7f9fc' }}>
         <Typography variant="h3" gutterBottom sx={{ color: '#005a9e' }}>
           {decodedProductName}

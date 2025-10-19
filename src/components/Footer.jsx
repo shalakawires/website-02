@@ -78,6 +78,7 @@ function Footer() {
                 href="https://www.facebook.com/shalakawires"
                 target="_blank"
                 color="inherit"
+                aria-label="Facebook"
                 sx={{ transition: "transform 0.2s", "&:hover": { transform: "scale(1.1)" } }}
               >
                 <Facebook />
@@ -86,6 +87,7 @@ function Footer() {
                 href="https://x.com/shalakawires"
                 target="_blank"
                 color="inherit"
+                aria-label="X (Twitter)"
                 sx={{ transition: "transform 0.2s", "&:hover": { transform: "scale(1.1)" } }}
               >
                 <XIcon />
@@ -94,6 +96,7 @@ function Footer() {
                 href="https://instagram.com/shalakawires"
                 target="_blank"
                 color="inherit"
+                aria-label="Instagram"
                 sx={{ transition: "transform 0.2s", "&:hover": { transform: "scale(1.1)" } }}
               >
                 <Instagram />
@@ -102,6 +105,7 @@ function Footer() {
                 href="https://www.linkedin.com/company/shalaka-wires-llp"
                 target="_blank"
                 color="inherit"
+                aria-label="LinkedIn"
                 sx={{ transition: "transform 0.2s", "&:hover": { transform: "scale(1.1)" } }}
               >
                 <LinkedIn />

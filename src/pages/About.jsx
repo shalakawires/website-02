@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useLocation } from 'react-router-dom';
-import { Container, Box, Typography } from '@mui/material'; // Import Container, Box, and Typography
+import { Container, Box, Typography, Grid, Card, CardMedia, CardContent } from '@mui/material';
 
 function About() {
-  const [hoveredCard, setHoveredCard] = useState(null);
   const keyMachinesRef = useRef(null);
   const location = useLocation();
 
@@ -48,59 +47,59 @@ function About() {
     },
   };
 
-  const getCardStyle = (machine) => ({
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    padding: '1rem',
-    boxShadow: hoveredCard === machine ? '0 12px 24px rgba(0, 0, 0, 0.3)' : '0 6px 12px rgba(0, 0, 0, 0.15)',
-    transition: 'all 0.3s ease',
-    transform: hoveredCard === machine ? 'translateY(-5px)' : 'translateY(0)',
-  });
-
   return (
-    <div>
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
         <Box sx={{ my: 4, textAlign: 'center' }}>
           <Typography variant="h3" component="h1" gutterBottom sx={{ color: '#005a9e' }}>About Us</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Shalaka Wires LLP is a leading manufacturer of high-quality MS wire products. With years of experience in the industry, we are committed to providing our customers with superior products and excellent service.</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Our mission is to be a reliable partner for our clients, offering a diverse range of wire products that meet stringent quality standards. We believe in innovation, customer satisfaction, and sustainable practices.</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Our product portfolio includes binding wire, MS wire nails, GI wire, chain link, mesh, and various other customized wire solutions.</Typography>
         </Box>
-      </Container>
 
-      <div style={{ margin: '3rem 0' }} ref={keyMachinesRef} id="key-machines">
-        <h2 style={{ textAlign: 'center', color: '#005a9e' }}>Key Machines in Our Production Process</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1rem' }}>
+      <Box sx={{ my: 4 }} ref={keyMachinesRef} id="key-machines">
+        <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center', color: '#005a9e', mb: 4 }}>Key Machines in Our Production Process</Typography>
+        <Grid container spacing={4}>
           {Object.keys(plantImages).map((machine) => (
-            <div
-              key={machine}
-              style={getCardStyle(machine)}
-              onMouseEnter={() => setHoveredCard(machine)}
-              onMouseLeave={() => setHoveredCard(null)}
-            >
-              <Carousel autoPlay interval={3000} infiniteLoop showThumbs={false} showStatus={false} showIndicators={false}>
-                {plantImages[machine].images.map((image, index) => (
-                  <div key={index}>
-                    <img src={image} alt={`${machine} ${index + 1}`} style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '8px' }} />
-                  </div>
-                ))}
-              </Carousel>
-              <div style={{ padding: '1rem 0' }}>
-                <h3 style={{ textAlign: 'center' }}>{plantImages[machine].title}</h3>
-                <p style={{ textAlign: 'center' }}>{plantImages[machine].description}</p>
-              </div>
-            </div>
+            <Grid item xs={12} sm={6} md={4} key={machine}>
+              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
+                <Carousel autoPlay interval={3000} infiniteLoop showThumbs={false} showStatus={false} showIndicators={false}>
+                  {plantImages[machine].images.map((image, index) => (
+                    <CardMedia
+                      key={index}
+                      component="img"
+                      sx={{ height: 220, objectFit: 'cover' }}
+                      image={image}
+                      alt={`${machine} ${index + 1}`}
+                      loading="lazy"
+                    />
+                  ))}
+                </Carousel>
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" component="h3" textAlign="center">{plantImages[machine].title}</Typography>
+                  <Typography variant="body2" textAlign="center">{plantImages[machine].description}</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </div>
-      </div>
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        </Grid>
+      </Box>
+
         <Box sx={{ my: 4, textAlign: 'center' }}>
-          <Typography variant="h2" component="h2" gutterBottom sx={{'color':'#2E8B57', 'fontSize':'2rem', 'fontWeight':'bold'}}>Our Green Energy Commitment</Typography>
-          <Typography variant="body1" paragraph textAlign="justify" sx={{'color':'#555', 'fontSize':'1.1rem', 'lineHeight':'1.6'}}>At Shalaka Wires, we believe that industrial growth must go hand-in-hand with environmental responsibility. In line with India’s ambitious green energy initiatives and the national goal of achieving net-zero carbon emissions by 2070, we are proud to announce the installation of a rooftop solar power plant at our facility. This step significantly reduces our carbon footprint and supports the transition to renewable energy sources. By embracing solar energy, we are not only lowering our carbon emissions but also contributing to a cleaner, more sustainable future for generations to come.</Typography>
-          <img src="/plant-images/Solar Rooftop - 1.jpg" alt="Solar Rooftop" style={{ width: '40%', marginTop: '2rem', borderRadius: '8px' }} />
+          <Typography variant="h2" component="h2" gutterBottom sx={{color:'#2E8B57', fontSize:'2rem', fontWeight:'bold'}}>Our Green Energy Commitment</Typography>
+          <Typography variant="body1" paragraph textAlign="justify" sx={{color:'#555', fontSize:'1.1rem', lineHeight:'1.6'}}>At Shalaka Wires, we believe that industrial growth must go hand-in-hand with environmental responsibility. In line with India’s ambitious green energy initiatives and the national goal of achieving net-zero carbon emissions by 2070, we are proud to announce the installation of a rooftop solar power plant at our facility. This step significantly reduces our carbon footprint and supports the transition to renewable energy sources. By embracing solar energy, we are not only lowering our carbon emissions but also contributing to a cleaner, more sustainable future for generations to come.</Typography>
+          <Box
+            component="img"
+            src="/plant-images/Solar Rooftop - 1.jpg"
+            alt="Solar Rooftop"
+            loading="lazy"
+            sx={{
+              width: { xs: '90%', md: '40%' },
+              marginTop: '2rem',
+              borderRadius: '8px'
+            }}
+          />
         </Box>
-      </Container>
-    </div>
+    </Container>
   );
 }
 

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText, CircularProgress } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Products from './pages/Products';
-import Contact from './pages/Contact';
-import Quality from './pages/Quality';
-import ProductDetail from './pages/ProductDetail'; // Import the ProductDetail component
-import Footer from './components/Footer'; // Import the Footer component
-import ScrollToTop from './components/ScrollToTop'; // Import the ScrollToTop component
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Products = lazy(() => import('./pages/Products'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Quality = lazy(() => import('./pages/Quality'));
+const ProductDetail = lazy(() => import('./pages/ProductDetail'));
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import logo from '/logo.png';
 
 // Create a custom theme
@@ -33,7 +33,7 @@ const theme = createTheme({
   typography: {
     fontFamily: ['Avenir', 'Helvetica', 'Arial', 'sans-serif'].join(','),
     h2: {
-      fontSize: '7rem', // Further increased font size for h2 to make it larger
+      fontSize: '7rem',
       fontWeight: 700,
       color: '#005a9e',
     },
@@ -59,7 +59,7 @@ const theme = createTheme({
         root: {
           textTransform: 'none',
           fontWeight: 600,
-          fontSize: '1.1rem', // Increased font size
+          fontSize: '1.1rem',
         },
       },
     },
@@ -145,14 +145,16 @@ function App() {
               {drawer}
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1 }}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/quality" element={<Quality />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/product/:productName" element={<ProductDetail />} />
-              </Routes>
+              <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}><CircularProgress /></Box>}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/quality" element={<Quality />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/product/:productName" element={<ProductDetail />} />
+                </Routes>
+              </Suspense>
             </Box>
             <Footer />
           </Box>

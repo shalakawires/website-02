@@ -16,7 +16,7 @@ function Quality() {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ my: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ color: 'primary.main', textAlign: 'center' }}>
           Our Commitment to Quality
@@ -58,7 +58,7 @@ function Quality() {
           MS Wire Sizes Specifications & Tolerance
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <TableContainer component={Paper} sx={{ mt: 2, maxWidth: 500 }}>
+          <TableContainer component={Paper} sx={{ mt: 2, maxWidth: 500, overflowX: 'auto' }}>
             <Table aria-label="MS Wire Specifications Table">
               <TableHead>
                 <TableRow>

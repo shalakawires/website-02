@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton } from '@mui/material';
+import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -77,6 +78,8 @@ function Home() {
   const heroTextRef = useRef(null);
   const navigate = useNavigate();
   const machines = Object.values(plantImages);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -103,14 +106,14 @@ function Home() {
 
   const renderArrowPrev = (onClickHandler, hasPrev, label) =>
     hasPrev && (
-      <IconButton onClick={onClickHandler} title={label} style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', left: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+      <IconButton onClick={onClickHandler} title={label} aria-label="Previous slide" style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', left: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
         <ArrowBackIos />
       </IconButton>
     );
 
   const renderArrowNext = (onClickHandler, hasNext, label) =>
     hasNext && (
-      <IconButton onClick={onClickHandler} title={label} style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', right: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+      <IconButton onClick={onClickHandler} title={label} aria-label="Next slide" style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', right: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
         <ArrowForwardIos />
       </IconButton>
     );
@@ -122,10 +125,10 @@ function Home() {
         sx={{
           bgcolor: 'grey.900',
           color: 'white',
-          py: 12,
+          py: 8,
           textAlign: 'center',
           position: 'relative',
-          minHeight: '25vh',
+          minHeight: '35vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -148,8 +151,7 @@ function Home() {
           }
         }}
       >
-        <Container maxWidth="md">
-        </Container>
+        <Container maxWidth="md" />
       </Box>
 
       {/* Featured Products Section */}
@@ -167,7 +169,7 @@ function Home() {
           autoPlay={true}
           interval={3000}
           centerMode={true}
-          centerSlidePercentage={33.33}
+          centerSlidePercentage={isMobile ? 100 : 33.33}
           stopOnHover={true}
           transitionTime={1000}
           renderArrowPrev={renderArrowPrev}
@@ -189,7 +191,7 @@ function Home() {
                     loading="lazy"
                   />
                   <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-                    <Typography variant="h6" component="h2" textAlign="center" color="text.primary">
+                    <Typography variant="h6" component="h3" textAlign="center" color="text.primary">
                       {product.name}
                     </Typography>
                   </CardContent>
@@ -204,6 +206,7 @@ function Home() {
       <Container sx={{ py: 8, position: 'relative' }} maxWidth="lg">
         <Typography
           variant="h4"
+          component="h2"
           align="center"
           gutterBottom
           sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer', color: '#005a9e' }}
@@ -219,7 +222,7 @@ function Home() {
           autoPlay={true}
           interval={5000}
           centerMode={true}
-          centerSlidePercentage={33.33}
+          centerSlidePercentage={isMobile ? 100 : 33.33}
           stopOnHover={true}
           transitionTime={1000}
           renderArrowPrev={renderArrowPrev}
@@ -258,7 +261,7 @@ function Home() {
                     ))}
                 </Carousel>
                 <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-                  <Typography gutterBottom variant="h6" component="h2" textAlign="center">
+                  <Typography gutterBottom variant="h6" component="h3" textAlign="center">
                     {machine.title}
                   </Typography>
                 </CardContent>
