@@ -1,20 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { useLocation } from 'react-router-dom';
 import { Container, Box, Typography, Grid, Card, CardMedia, CardContent } from '@mui/material';
 import useTitle from '../hooks/useTitle';
 
 function About() {
   useTitle('About Us | Shalaka Wires', 'Discover Shalaka Wires, a leading wire manufacturer dedicated to innovation, quality, and sustainable practices. Learn about our advanced technology and commitment to customer satisfaction.');
   const keyMachinesRef = useRef(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash === '#key-machines' && keyMachinesRef.current) {
-      keyMachinesRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [location]);
 
   const plantImages = {
     SLM: {
@@ -59,26 +51,26 @@ function About() {
         </Box>
 
       <Box sx={{ my: 4 }} ref={keyMachinesRef} id="key-machines">
-        <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center', color: '#005a9e', mb: 4 }}>Key Machines in Our Production Process</Typography>
-        <Grid container spacing={4}>
+        <Typography variant="h2" component="h2" gutterBottom sx={{ textAlign: 'center', color: '#005a9e', mb: 4, fontSize: '2rem', fontWeight: 'bold' }}>Key Machines in Our Production Process</Typography>
+        <Grid container spacing={4} justifyContent="center">
           {Object.keys(plantImages).map((machine) => (
-            <Grid item xs={12} sm={6} md={4} key={machine}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
+            <Grid item xs={12} sm={6} md={6} key={machine} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' }, maxWidth: 530 }}>
                 <Carousel autoPlay interval={3000} infiniteLoop showThumbs={false} showStatus={false} showIndicators={false}>
                   {plantImages[machine].images.map((image, index) => (
                     <CardMedia
                       key={index}
                       component="img"
-                      sx={{ height: 220, objectFit: 'cover' }}
+                      sx={{ height: 400, objectFit: 'contain', width: '100%' }}
                       image={image}
                       alt={`${machine} ${index + 1}`}
                       loading="lazy"
                     />
                   ))}
                 </Carousel>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" component="h3" textAlign="center">{plantImages[machine].title}</Typography>
-                  <Typography variant="body2" textAlign="center">{plantImages[machine].description}</Typography>
+                <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 2 }}>
+                  <Typography variant="h6" component="h3" textAlign="center" gutterBottom sx={{ height: '3em' }}>{plantImages[machine].title}</Typography>
+                  <Typography variant="body2" textAlign="justify">{plantImages[machine].description}</Typography>
                 </CardContent>
               </Card>
             </Grid>

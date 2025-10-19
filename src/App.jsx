@@ -1,6 +1,6 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText, CircularProgress } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText, CircularProgress, Menu, MenuItem } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -63,11 +63,42 @@ const theme = createTheme({
         },
       },
     },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: '#005a9e',
+          '&:hover': {
+            backgroundColor: 'rgba(0, 90, 158, 0.08)',
+          },
+        },
+      },
+    },
   },
 });
 
+const products = [
+  { name: 'MS Wire' },
+  { name: 'Shalaka Binding Wire' },
+  { name: 'MS Wire Nails' },
+  { name: 'Galvanized Wire' },
+  { name: 'Chain Link Fence' },
+  { name: 'Barbed Wire' },
+  { name: 'MS Weld Mesh' },
+  { name: 'Fine Galvanized Wire' },
+  { name: 'HB Wire' },
+];
+
 function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -112,7 +143,7 @@ function App() {
                   <Box
                     component="img"
                     sx={{
-                      height: 60,
+                      height: 80,
                       mr: 2,
                     }}
                     alt="Shalaka Wires LLP Logo"
@@ -121,9 +152,42 @@ function App() {
                 </Typography>
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                   {navItems.map((item) => (
-                    <Button key={item.text} sx={{ color: theme.palette.primary.main }} component={RouterLink} to={item.path}>
-                      {item.text}
-                    </Button>
+                    item.text === 'Products' ? (
+                      <div key={item.text} onMouseLeave={handleMenuClose}>
+                        <Button
+                          sx={{ color: theme.palette.primary.main, px: 2.5, py: 3, '&:hover': { backgroundColor: 'rgba(0, 90, 158, 0.08)' } }}
+                          component={RouterLink}
+                          to={item.path}
+                          onMouseEnter={handleMenuOpen}
+                        >
+                          {item.text}
+                        </Button>
+                        <Menu
+                          anchorEl={anchorEl}
+                          open={Boolean(anchorEl)}
+                          onClose={handleMenuClose}
+                          MenuListProps={{ onMouseLeave: handleMenuClose }}
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                          }}
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'left',
+                          }}
+                        >
+                          {products.map((product) => (
+                            <MenuItem key={product.name} onClick={handleMenuClose} component={RouterLink} to={`/product/${encodeURIComponent(product.name)}`}>
+                              {product.name}
+                            </MenuItem>
+                          ))}
+                        </Menu>
+                      </div>
+                    ) : (
+                      <Button key={item.text} sx={{ color: theme.palette.primary.main, px: 2.5, py: 3, '&:hover': { backgroundColor: 'rgba(0, 90, 158, 0.08)' } }} component={RouterLink} to={item.path}>
+                        {item.text}
+                      </Button>
+                    )
                   ))}
                 </Box>
                 <IconButton

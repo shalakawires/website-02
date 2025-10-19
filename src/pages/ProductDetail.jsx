@@ -146,7 +146,7 @@ function ProductDetail() {
                 <Typography variant="h5" gutterBottom sx={{ color: '#414042' }}>
                   Description
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 4 }}>
+                <Typography variant="body1" sx={{ mb: 4, textAlign: 'justify' }}>
                   {product.description}
                 </Typography>
               </>

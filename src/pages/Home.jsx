@@ -84,16 +84,6 @@ function Home() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if(featuredProductsRef.current) {
-        featuredProductsRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     if (heroTextRef.current) {
       gsap.fromTo(heroTextRef.current,
         { opacity: 0, y: 50 },
@@ -206,16 +196,17 @@ function Home() {
       
       {/* Key Machines Section */}
       <Container sx={{ py: 8, position: 'relative' }} maxWidth="lg">
-        <Typography
-          variant="h4"
-          component="h2"
-          align="center"
-          gutterBottom
-          sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer', color: '#005a9e' }}
-          onClick={handleTitleClick}
-        >
-          Key Machines in Our Production Process
-        </Typography>
+        <Link to="/about#key-machines" style={{ textDecoration: 'none' }}>
+          <Typography
+            variant="h4"
+            component="h2"
+            align="center"
+            gutterBottom
+            sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer', color: '#005a9e' }}
+          >
+            Key Machines in Our Production Process
+          </Typography>
+        </Link>
         <Carousel
           showArrows={true}
           infiniteLoop={true}
