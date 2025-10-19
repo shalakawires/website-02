@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-d
 import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Drawer, List, ListItem, ListItemText, CircularProgress } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import { HelmetProvider } from 'react-helmet-async';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -102,65 +103,67 @@ function App() {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <ScrollToTop>
-          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <AppBar position="static" sx={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0' }}>
-              <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 2 }}>
-                <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main }}>
-                  <Box
-                    component="img"
-                    sx={{
-                      height: 60,
-                      mr: 2,
-                    }}
-                    alt="Shalaka Wires LLP Logo"
-                    src={logo}
-                  />
-                </Typography>
-                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                  {navItems.map((item) => (
-                    <Button key={item.text} sx={{ color: theme.palette.primary.main }} component={RouterLink} to={item.path}>
-                      {item.text}
-                    </Button>
-                  ))}
-                </Box>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="end"
-                  onClick={toggleDrawer(true)}
-                  sx={{ display: { md: 'none' }, color: theme.palette.primary.main }}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Toolbar>
-            </AppBar>
-            <Drawer
-              anchor="right"
-              open={drawerOpen}
-              onClose={toggleDrawer(false)}
-            >
-              {drawer}
-            </Drawer>
-            <Box component="main" sx={{ flexGrow: 1 }}>
-              <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}><CircularProgress /></Box>}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/quality" element={<Quality />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/product/:productName" element={<ProductDetail />} />
-                </Routes>
-              </Suspense>
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <ScrollToTop>
+            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+              <AppBar position="static" sx={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0' }}>
+                <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 2 }}>
+                  <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main }}>
+                    <Box
+                      component="img"
+                      sx={{
+                        height: 60,
+                        mr: 2,
+                      }}
+                      alt="Shalaka Wires LLP Logo"
+                      src={logo}
+                    />
+                  </Typography>
+                  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    {navItems.map((item) => (
+                      <Button key={item.text} sx={{ color: theme.palette.primary.main }} component={RouterLink} to={item.path}>
+                        {item.text}
+                      </Button>
+                    ))}
+                  </Box>
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="end"
+                    onClick={toggleDrawer(true)}
+                    sx={{ display: { md: 'none' }, color: theme.palette.primary.main }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </Toolbar>
+              </AppBar>
+              <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+              >
+                {drawer}
+              </Drawer>
+              <Box component="main" sx={{ flexGrow: 1 }}>
+                <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}><CircularProgress /></Box>}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/quality" element={<Quality />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/product/:productName" element={<ProductDetail />} />
+                  </Routes>
+                </Suspense>
+              </Box>
+              <Footer />
             </Box>
-            <Footer />
-          </Box>
-        </ScrollToTop>
-      </BrowserRouter>
-    </ThemeProvider>
+          </ScrollToTop>
+        </BrowserRouter>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 
