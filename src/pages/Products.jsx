@@ -21,7 +21,7 @@ function Products() {
         <Typography variant="h3" component="h1" gutterBottom textAlign="center" color="primary">
           Our Products
         </Typography>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justifyContent="center">
           {products.map((product, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Link to={`/product/${encodeURIComponent(product.name)}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>

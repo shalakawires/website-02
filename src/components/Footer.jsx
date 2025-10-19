@@ -4,6 +4,18 @@ import { Facebook, Instagram, LinkedIn, Home as HomeIcon, Info as InfoIcon, Cate
 import XIcon from '@mui/icons-material/X';
 import { Link as RouterLink } from 'react-router-dom';
 
+const products = [
+  { name: 'MS Wire' },
+  { name: 'Shalaka Binding Wire' },
+  { name: 'MS Wire Nails' },
+  { name: 'Galvanized Wire' },
+  { name: 'Chain Link Fence' },
+  { name: 'Barbed Wire' },
+  { name: 'MS Weld Mesh' },
+  { name: 'Fine Galvanized Wire' },
+  { name: 'HB Wire' },
+];
+
 function Footer() {
   return (
     <Box
@@ -11,13 +23,13 @@ function Footer() {
       sx={{
         backgroundColor: "grey.900",
         color: "white",
-        py: 1, // Further reduced padding
+        py: 1,
         borderTop: "1px solid",
         borderColor: "grey.800",
       }}
     >
       <Container maxWidth="lg">
-        <Box textAlign="center" mb={0.5}> {/* Further reduced margin-bottom */}
+        <Box textAlign="center" mb={0.5}>
           <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold", color: "white", fontFamily: "Montserrat, sans-serif", textTransform: "uppercase" }}>
             Shalaka Wires LLP
           </Typography>
@@ -26,14 +38,14 @@ function Footer() {
           </Typography>
         </Box>
 
-        <Divider sx={{ bgcolor: "grey.700", mb: 1 }} /> {/* Reduced margin-bottom */}
+        <Divider sx={{ bgcolor: "grey.700", mb: 1 }} />
 
-        <Grid container spacing={2} justifyContent="space-around"> {/* Reduced spacing */}
-          <Grid item xs={12} md={3}>
+        <Grid container spacing={2} justifyContent="space-around">
+          <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
               Quick Links
             </Typography>
-            <Stack spacing={0.5} mt={1}> {/* Reduced spacing and margin-top */}
+            <Stack spacing={0.5} mt={1}>
               <Link component={RouterLink} to="/" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                 <HomeIcon sx={{ mr: 1, fontSize: 18 }} /> Home
               </Link>
@@ -47,33 +59,43 @@ function Footer() {
                 <QualityIcon sx={{ mr: 1, fontSize: 18 }} /> Quality
               </Link>
               <Link component={RouterLink} to="/contact" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
-                <ContactMailIcon sx={{ mr: 1, fontSize: 18 }} /> Contact Us
+                <ContactMailIcon sx={{ mr: 1, fontSize: 18 }} /> Get In Touch
               </Link>
             </Stack>
           </Grid>
 
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-              Contact Us
+              Products Link
             </Typography>
-            <Stack spacing={0.5} mt={1}> {/* Reduced spacing and margin-top */}
+            <Stack spacing={0.5} mt={1}>
+              {products.map((product) => (
+                <Link key={product.name} component={RouterLink} to={`/product/${encodeURIComponent(product.name)}`} color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                  {product.name}
+                </Link>
+              ))}
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
+              Get In Touch
+            </Typography>
+            <Stack spacing={0.5} mt={1}>
               <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
                 <Email sx={{ mr: 1, fontSize: 18 }} /> shalakawires@gmail.com
               </Typography>
               <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
                 <Phone sx={{ mr: 1, fontSize: 18 }} /> +91 98227 67618, +91 91587 24723
               </Typography>
-              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'flex-start', mt: 0.5 }}> {/* Reduced margin-top */}
-                <LocationOn sx={{ mr: 1, fontSize: 18 }} /> <b>Factory Address:</b> Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
+              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'flex-start', mt: 0.5 }}>
+                <LocationOn sx={{ mr: 1, fontSize: 18 }} /> Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
               </Typography>
             </Stack>
-          </Grid>
-          
-          <Grid item xs={12} md={3}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold", mt: 2 }}>
               Follow Us
             </Typography>
-            <Stack direction="row" spacing={1} sx={{ mt: 1 }}> {/* Reduced margin-top */}
+            <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
               <IconButton
                 href="https://www.facebook.com/shalakawires"
                 target="_blank"
@@ -114,7 +136,7 @@ function Footer() {
           </Grid>
         </Grid>
 
-        <Box mt={1} textAlign="center"> {/* Further reduced margin-top */}
+        <Box mt={1} textAlign="center">
           <Typography variant="body2" sx={{ color: "grey.500" }}>
             © {new Date().getFullYear()} Shalaka Wires LLP. All rights reserved.
           </Typography>

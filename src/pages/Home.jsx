@@ -168,7 +168,7 @@ function Home() {
           showStatus={false}
           autoPlay={true}
           interval={3000}
-          centerMode={true}
+          centerMode={!isMobile}
           centerSlidePercentage={isMobile ? 100 : 33.33}
           stopOnHover={true}
           transitionTime={1000}
@@ -221,7 +221,7 @@ function Home() {
           showStatus={false}
           autoPlay={true}
           interval={5000}
-          centerMode={true}
+          centerMode={!isMobile}
           centerSlidePercentage={isMobile ? 100 : 33.33}
           stopOnHover={true}
           transitionTime={1000}
