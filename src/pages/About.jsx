@@ -61,7 +61,7 @@ function About() {
     <div>
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
         <Box sx={{ my: 4, textAlign: 'center' }}>
-          <Typography variant="h2" component="h1" gutterBottom sx={{ color: '#005a9e' }}>About Us</Typography>
+          <Typography variant="h3" component="h1" gutterBottom sx={{ color: '#005a9e' }}>About Us</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Shalaka Wires LLP is a leading manufacturer of high-quality MS wire products. With years of experience in the industry, we are committed to providing our customers with superior products and excellent service.</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Our mission is to be a reliable partner for our clients, offering a diverse range of wire products that meet stringent quality standards. We believe in innovation, customer satisfaction, and sustainable practices.</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Our product portfolio includes binding wire, MS wire nails, GI wire, chain link, mesh, and various other customized wire solutions.</Typography>

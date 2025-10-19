@@ -18,7 +18,7 @@ function Quality() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Box sx={{ my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'primary.main', textAlign: 'center' }}>
+        <Typography variant="h3" component="h1" gutterBottom sx={{ color: 'primary.main', textAlign: 'center' }}>
           Our Commitment to Quality
         </Typography>
         <Typography variant="body1" paragraph textAlign="justify">

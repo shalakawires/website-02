@@ -1,16 +1,18 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Container, Card, CardMedia, CardContent } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton } from '@mui/material';
+import { useNavigate, Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { gsap } from 'gsap';
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 
 const featuredProducts = [
   {
-    name: 'MS Binding Wire',
+    name: 'MS Wire',
     image: '/product-images/binding wire-2.png',
   },
   {
-    name: 'Black Annealed Wire',
+    name: 'Shalaka Binding Wire',
     image: '/product-images/binding-wire.png',
   },
   {
@@ -72,6 +74,7 @@ const plantImages = {
 
 function Home() {
   const featuredProductsRef = useRef(null);
+  const heroTextRef = useRef(null);
   const navigate = useNavigate();
   const machines = Object.values(plantImages);
 
@@ -85,45 +88,35 @@ function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (heroTextRef.current) {
+      gsap.fromTo(heroTextRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
+      );
+    }
+  }, []);
+
   const handleTitleClick = () => {
     navigate('/about#key-machines');
   };
 
+  const renderArrowPrev = (onClickHandler, hasPrev, label) =>
+    hasPrev && (
+      <IconButton onClick={onClickHandler} title={label} style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', left: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+        <ArrowBackIos />
+      </IconButton>
+    );
+
+  const renderArrowNext = (onClickHandler, hasNext, label) =>
+    hasNext && (
+      <IconButton onClick={onClickHandler} title={label} style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', right: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+        <ArrowForwardIos />
+      </IconButton>
+    );
+
   return (
     <Box>
-       <style>
-        {`
-          .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
-            background: rgba(0, 0, 0, 0.5) !important;
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            top: 50% !important;
-            transform: translateY(-50%);
-          }
-          .carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
-            border-top-width: 10px;
-            border-bottom-width: 10px;
-            border-left-width: 10px;
-            border-right-width: 10px;
-          }
-          .carousel .dot {
-            background: #9e9e9e !important;
-            width: 12px !important;
-            height: 12px !important;
-            border-radius: 50% !important;
-            box-shadow: none !important;
-            opacity: 0.5 !important;
-          }
-          .carousel .dot.selected, .carousel .dot:hover {
-            background: #3f51b5 !important;
-            opacity: 1 !important;
-          }
-          .carousel .control-dots {
-            bottom: -40px !important;
-          }
-        `}
-      </style>
       {/* Hero Section */}
       <Box
         sx={{
@@ -160,10 +153,12 @@ function Home() {
       </Box>
 
       {/* Featured Products Section */}
-      <Container sx={{ py: 8 }} maxWidth="lg" ref={featuredProductsRef}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 6, color: '#005a9e' }}>
-          Featured Products
-        </Typography>
+      <Container sx={{ py: 8, position: 'relative' }} maxWidth="lg" ref={featuredProductsRef}>
+        <Link to="/products" style={{ textDecoration: 'none' }}>
+          <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 6, color: '#005a9e', cursor: 'pointer' }}>
+            Featured Products
+          </Typography>
+        </Link>
         <Carousel
           showArrows={true}
           infiniteLoop={true}
@@ -175,33 +170,37 @@ function Home() {
           centerSlidePercentage={33.33}
           stopOnHover={true}
           transitionTime={1000}
+          renderArrowPrev={renderArrowPrev}
+          renderArrowNext={renderArrowNext}
         >
           {featuredProducts.map((product) => (
             <Box key={product.name} sx={{ p: 2 }}>
-              <Card sx={{ height: 300, display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
-                <CardMedia
-                  component="img"
-                  sx={{
-                    height: 250, 
-                    objectFit: 'contain',
-                  }}
-                  image={product.image}
-                  alt={product.name}
-                  loading="lazy"
-                />
-                <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-                  <Typography gutterBottom variant="h6" component="h2" textAlign="center">
-                    {product.name}
-                  </Typography>
-                </CardContent>
-              </Card>
+              <Link to={`/product/${encodeURIComponent(product.name)}`} style={{ textDecoration: 'none' }}>
+                <Card sx={{ height: 300, display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      height: 250, 
+                      objectFit: 'contain',
+                    }}
+                    image={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                  />
+                  <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+                    <Typography variant="h6" component="h2" textAlign="center" color="text.primary">
+                      {product.name}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Link>
             </Box>
           ))}
         </Carousel>
       </Container>
       
       {/* Key Machines Section */}
-      <Container sx={{ py: 8 }} maxWidth="lg">
+      <Container sx={{ py: 8, position: 'relative' }} maxWidth="lg">
         <Typography
           variant="h4"
           align="center"
@@ -222,6 +221,8 @@ function Home() {
           centerSlidePercentage={33.33}
           stopOnHover={true}
           transitionTime={1000}
+          renderArrowPrev={renderArrowPrev}
+          renderArrowNext={renderArrowNext}
         >
           {machines.map((machine) => (
             <Box key={machine.title} sx={{ p: 2 }}>

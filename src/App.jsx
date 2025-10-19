@@ -9,7 +9,9 @@ import About from './pages/About';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
 import Quality from './pages/Quality';
+import ProductDetail from './pages/ProductDetail'; // Import the ProductDetail component
 import Footer from './components/Footer'; // Import the Footer component
+import ScrollToTop from './components/ScrollToTop'; // Import the ScrollToTop component
 import logo from '/logo.png';
 
 // Create a custom theme
@@ -31,7 +33,7 @@ const theme = createTheme({
   typography: {
     fontFamily: ['Avenir', 'Helvetica', 'Arial', 'sans-serif'].join(','),
     h2: {
-      fontSize: '3rem',
+      fontSize: '7rem', // Further increased font size for h2 to make it larger
       fontWeight: 700,
       color: '#005a9e',
     },
@@ -102,56 +104,59 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <AppBar position="static" sx={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0' }}>
-            <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 2 }}>
-              <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main }}>
-                <Box
-                  component="img"
-                  sx={{
-                    height: 60,
-                    mr: 2,
-                  }}
-                  alt="Shalaka Wires LLP Logo"
-                  src={logo}
-                />
-              </Typography>
-              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                {navItems.map((item) => (
-                  <Button key={item.text} sx={{ color: theme.palette.primary.main }} component={RouterLink} to={item.path}>
-                    {item.text}
-                  </Button>
-                ))}
-              </Box>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="end"
-                onClick={toggleDrawer(true)}
-                sx={{ display: { md: 'none' }, color: theme.palette.primary.main }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            anchor="right"
-            open={drawerOpen}
-            onClose={toggleDrawer(false)}
-          >
-            {drawer}
-          </Drawer>
-          <Box component="main" sx={{ flexGrow: 1 }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/quality" element={<Quality />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
+        <ScrollToTop>
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <AppBar position="static" sx={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0' }}>
+              <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 2 }}>
+                <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main }}>
+                  <Box
+                    component="img"
+                    sx={{
+                      height: 60,
+                      mr: 2,
+                    }}
+                    alt="Shalaka Wires LLP Logo"
+                    src={logo}
+                  />
+                </Typography>
+                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                  {navItems.map((item) => (
+                    <Button key={item.text} sx={{ color: theme.palette.primary.main }} component={RouterLink} to={item.path}>
+                      {item.text}
+                    </Button>
+                  ))}
+                </Box>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="end"
+                  onClick={toggleDrawer(true)}
+                  sx={{ display: { md: 'none' }, color: theme.palette.primary.main }}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={toggleDrawer(false)}
+            >
+              {drawer}
+            </Drawer>
+            <Box component="main" sx={{ flexGrow: 1 }}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/quality" element={<Quality />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/product/:productName" element={<ProductDetail />} />
+              </Routes>
+            </Box>
+            <Footer />
           </Box>
-          <Footer />
-        </Box>
+        </ScrollToTop>
       </BrowserRouter>
     </ThemeProvider>
   );
