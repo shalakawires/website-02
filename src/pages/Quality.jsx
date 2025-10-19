@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box, Typography, Container, Grid, Card, CardMedia, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Helmet } from 'react-helmet-async';
+import useTitle from '../hooks/useTitle';
 
 function Quality() {
+  useTitle('Delivering Quality You Can Trust | Shalaka Wires', 'We are committed to delivering excellence. Learn about our rigorous quality control, advanced testing, and adherence to the highest industry standards for every wire product.');
   const theme = useTheme();
 
   const specifications = [
@@ -18,10 +19,6 @@ function Quality() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Helmet>
-        <title>Delivering Quality You Can Trust | Shalaka Wires</title>
-        <meta name="description" content="We are committed to delivering excellence. Learn about our rigorous quality control, advanced testing, and adherence to the highest industry standards for every wire product." />
-      </Helmet>
       <Box sx={{ my: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ color: 'primary.main', textAlign: 'center' }}>
           Our Commitment to Quality

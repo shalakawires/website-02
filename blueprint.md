@@ -1,41 +1,59 @@
-# Shalaka Wires Website Blueprint
+# Blueprint
 
-## Project Overview
-The Shalaka Wires website is a React application designed to showcase their products and manufacturing capabilities. It includes sections for Home, About, Products, Product Detail, Quality, and Contact. The site aims to be visually appealing, responsive, and performant.
+## Overview
 
-## Current Application Features
-*   **Navigation:** Uses `react-router-dom` for navigation between different pages.
-*   **Components:** Includes `Footer` and `ScrollToTop` components.
-*   **Styling:** Uses `App.css` and `index.css`.
-*   **Image Usage:** The application utilizes images for product displays and plant visuals, stored in `public/plant-images/` and `public/product-images/`.
+This document outlines the structure and implementation details of the Shalaka Wires web application, a React-based project showcasing the company's products and information.
 
-### Sitemap
-A `sitemap.xml` file has been created in the `public` directory. The content has been updated to reflect a simpler structure with only the main domain `https://www.shalakawires.com/` as requested by the user. This is to aid search engine crawling and indexing.
+## Project Structure
 
-## Plan for Current Requested Change: Lighthouse Audit Remediation
+- `src/`
+  - `components/`: Contains reusable UI components like `Header`, `Footer`, etc.
+  - `pages/`: Contains the main page components for different routes, such as `Home`, `About`, `Products`, `Quality`, `Contact`, and `ProductDetail`.
+  - `hooks/`: Contains custom React hooks, including the `useTitle` hook for managing page titles and meta descriptions.
+  - `App.jsx`: The main application component, responsible for routing.
+  - `main.jsx`: The entry point of the application.
 
-The following steps will be taken to address the issues identified in the Lighthouse audit:
+## Implemented Features
 
-### 1. Performance Optimization
-*   **Image Optimization:** Resize and convert existing images to WebP format for improved loading times and reduced network payload. Implement lazy loading for offscreen images.
-*   **Component Lazy Loading:** Implement `React.lazy` and `Suspense` for page components to reduce initial JavaScript bundle size and improve First Contentful Paint (FCP) and Largest Contentful Paint (LCP).
-*   **Minify JavaScript/CSS:** Ensure Vite's build process is configured for optimal minification and tree-shaking.
-*   **Address Render-Blocking Resources:** Investigate and optimize CSS and JavaScript loading to prevent render-blocking.
-*   **Optimize JavaScript:** Review and optimize JavaScript code to minimize main-thread work and reduce execution time.
-*   **Configure HTTP/2:** Investigate and ensure the hosting environment is configured to serve assets over HTTP/2.
+- **Component-Based Architecture:** The application is built using a modular, component-based architecture, which makes it easy to manage and scale.
+- **Routing:** The application uses `react-router-dom` for client-side routing, enabling seamless navigation between pages without full page reloads.
+- **Styling:** The application uses Material-UI for styling, providing a consistent and modern look and feel. The theme is customized to match the company's branding.
+- **Custom Hooks:** A custom hook, `useTitle`, has been implemented to manage the document title and meta description for each page. This centralizes the logic for SEO and improves code reusability.
+- **Responsive Design:** The application is designed to be responsive and work on all devices, from desktops to mobile phones.
+- **Image Optimization:** The application uses `vite-plugin-image-optimizer` to optimize images, improving loading performance.
 
-### 2. Accessibility Improvements
-*   **Link Names:** Ensure all links have discernible names, either through descriptive text or `aria-label` attributes.
-*   **Image Alt Text:** Review and refine image `alt` attributes to be concise and non-redundant.
-*   **Touch Target Size:** Adjust the styling of interactive elements to meet minimum touch target size and spacing recommendations.
-*   **Heading Order:** Verify and correct the hierarchical order of heading elements (h1, h2, h3, etc.).
+## Key Components
 
-### 3. Best Practices & Security Enhancements
-*   **HTTPS Enforcement:** Investigate and configure the hosting environment to use HTTPS and redirect HTTP traffic to HTTPS.
-*   **Security Headers:** Implement appropriate security headers (CSP, HSTS, XFO, Trusted Types) in the web server or application configuration.
-*   **Browser Errors:** Investigate and fix any browser errors logged to the console.
-*   **Source Maps:** Ensure source maps are generated correctly during the build process for easier debugging.
+- **Header:** The header component contains the company logo, navigation links, and a call-to-action button.
+- **Footer:** The footer component contains contact information, social media links, and a sitemap.
+- **Product Card:** A reusable component for displaying product information in a visually appealing way.
+- **Carousel:** The application uses `react-responsive-carousel` to display a slideshow of images on the home page and product detail pages.
 
-### 4. SEO Enhancements
-*   **Meta Description:** Add a meta description to the `index.html` file or implement dynamic generation.
-*   **robots.txt Validation:** Correct any errors in the `robots.txt` file.
+## SEO and Metadata
+
+The `useTitle` hook is a custom hook that takes a title and a description as arguments and updates the document's title and meta description accordingly. This hook is used in each page component to provide unique and relevant metadata for each page, improving SEO and user experience.
+
+### `useTitle` Hook
+
+```javascript
+import { useEffect } from 'react';
+
+function useTitle(title, description) {
+  useEffect(() => {
+    document.title = title;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.setAttribute('name', 'description');
+      newMeta.setAttribute('content', description);
+      document.head.appendChild(newMeta);
+    }
+  }, [title, description]);
+}
+
+export default useTitle;
+```
+
+This hook is a more efficient and centralized way to manage page metadata compared to using a third-party library like `react-helmet-async`.

@@ -3,9 +3,10 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useLocation } from 'react-router-dom';
 import { Container, Box, Typography, Grid, Card, CardMedia, CardContent } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
+import useTitle from '../hooks/useTitle';
 
 function About() {
+  useTitle('About Us | Shalaka Wires', 'Discover Shalaka Wires, a leading wire manufacturer dedicated to innovation, quality, and sustainable practices. Learn about our advanced technology and commitment to customer satisfaction.');
   const keyMachinesRef = useRef(null);
   const location = useLocation();
 
@@ -50,10 +51,6 @@ function About() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Helmet>
-        <title>About Us | Shalaka Wires</title>
-        <meta name="description" content="Discover Shalaka Wires, a leading wire manufacturer dedicated to innovation, quality, and sustainable practices. Learn about our advanced technology and commitment to customer satisfaction." />
-      </Helmet>
         <Box sx={{ my: 4, textAlign: 'center' }}>
           <Typography variant="h3" component="h1" gutterBottom sx={{ color: '#005a9e' }}>About Us</Typography>
           <Typography variant="body1" paragraph textAlign="justify">Shalaka Wires LLP is a leading manufacturer of high-quality MS wire products. With years of experience in the industry, we are committed to providing our customers with superior products and excellent service.</Typography>

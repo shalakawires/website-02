@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Box, Typography, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
+import useTitle from '../hooks/useTitle';
 
 const productSpecifications = {
   'MS Wire': {
@@ -120,6 +120,8 @@ function ProductDetail() {
   const decodedProductName = decodeURIComponent(productName);
   const product = productSpecifications[decodedProductName];
 
+  useTitle(product ? `High-Quality ${decodedProductName} | Shalaka Wires` : 'Product Not Found', product ? `Get the best ${decodedProductName} from Shalaka Wires. Known for its durability and performance, our wire meets the highest standards. Check specifications and get a quote.` : 'The product you are looking for does not exist.');
+
   if (!product) {
     return (
       <Container sx={{ py: 4 }}>
@@ -130,10 +132,6 @@ function ProductDetail() {
 
   return (
     <Container sx={{ py: 4 }}>
-      <Helmet>
-        <title>{`High-Quality ${decodedProductName} | Shalaka Wires`}</title>
-        <meta name="description" content={`Get the best ${decodedProductName} from Shalaka Wires. Known for its durability and performance, our wire meets the highest standards. Check specifications and get a quote.`} />
-      </Helmet>
       <Paper sx={{ p: 4, backgroundColor: '#f7f9fc' }}>
         <Typography variant="h3" gutterBottom sx={{ color: '#005a9e' }}>
           {decodedProductName}

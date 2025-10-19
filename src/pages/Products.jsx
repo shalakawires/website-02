@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Container, Grid, Card, CardContent, CardMedia } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import useTitle from '../hooks/useTitle';
 
 const products = [
   { name: 'MS Wire', images: ['/product-images/binding wire-2.png']  },
@@ -16,12 +16,9 @@ const products = [
 ];
 
 function Products() {
+  useTitle('Our Premium Product Range | Shalaka Wires', 'From construction to fencing, find the perfect wire solution. Explore our extensive product line, featuring high-quality MS wire, galvanized wire, nails, and more.');
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Helmet>
-        <title>Our Premium Product Range | Shalaka Wires</title>
-        <meta name="description" content="From construction to fencing, find the perfect wire solution. Explore our extensive product line, featuring high-quality MS wire, galvanized wire, nails, and more." />
-      </Helmet>
       <Box sx={{ my: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom textAlign="center" color="primary">
           Our Products
