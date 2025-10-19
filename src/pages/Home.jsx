@@ -172,6 +172,7 @@ function Home() {
           transitionTime={1000}
           renderArrowPrev={renderArrowPrev}
           renderArrowNext={renderArrowNext}
+          showIndicators={false}
         >
           {featuredProducts.map((product) => (
             <Box key={product.name} sx={{ p: 2 }}>
@@ -223,6 +224,7 @@ function Home() {
           transitionTime={1000}
           renderArrowPrev={renderArrowPrev}
           renderArrowNext={renderArrowNext}
+          showIndicators={false}
         >
           {machines.map((machine) => (
             <Box key={machine.title} sx={{ p: 2 }}>
