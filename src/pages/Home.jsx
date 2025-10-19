@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { gsap } from 'gsap';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { Helmet } from 'react-helmet-async';
 
 const featuredProducts = [
   {
@@ -120,6 +121,10 @@ function Home() {
 
   return (
     <Box>
+      <Helmet>
+        <title>High-Quality MS Wire, GI Wire & MS Wire Nails Manufacturer in India | Shalaka Wires</title>
+        <meta name="description" content="Discover high-strength binding wires, durable galvanized wires, and more from a leading manufacturer. Get a quote today for your industrial needs." />
+      </Helmet>
       {/* Hero Section */}
       <Box
         sx={{

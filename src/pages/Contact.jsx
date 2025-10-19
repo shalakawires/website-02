@@ -5,10 +5,15 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Facebook, Instagram, LinkedIn } from "@mui/icons-material";
 import XIcon from '@mui/icons-material/X';
+import { Helmet } from 'react-helmet-async';
 
 function Contact() {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Helmet>
+        <title>Contact Us | Shalaka Wires</title>
+        <meta name="description" content="Ready to start your project? Contact Shalaka Wires today for a personalized quote or to get answers to your questions. We're here to help!" />
+      </Helmet>
       <Typography variant="h3" component="h1" gutterBottom textAlign="center">
         Contact Us
       </Typography>
