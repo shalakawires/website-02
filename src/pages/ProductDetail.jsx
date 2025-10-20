@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Box, Typography, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Box, Typography, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Button } from '@mui/material';
 import useTitle from '../hooks/useTitle';
 
 const productSpecifications = {
@@ -201,6 +201,16 @@ function ProductDetail() {
           </Box>
         </Box>
       </Paper>
+      <Box textAlign="center" sx={{ mt: 4 }}>
+        <Button
+          component={Link}
+          to="/products"
+          variant="contained"
+          color="primary"
+        >
+          View All Products
+        </Button>
+      </Box>
     </Container>
   );
 }

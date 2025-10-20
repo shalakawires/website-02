@@ -66,7 +66,9 @@ function Footer() {
 
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-              Products Link
+                <Link component={RouterLink} to="/products" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                    Products Link
+                </Link>
             </Typography>
             <Stack spacing={0.5} mt={1}>
               {products.map((product) => (
@@ -79,7 +81,9 @@ function Footer() {
 
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-              Get In Touch
+              <Link component={RouterLink} to="/contact" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                Get In Touch
+              </Link>
             </Typography>
             <Stack spacing={1} mt={1}>
               <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>

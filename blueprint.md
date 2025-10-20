@@ -21,11 +21,13 @@ This document outlines the structure and implementation details of the Shalaka W
 - **Custom Hooks:** A custom hook, `useTitle`, has been implemented to manage the document title and meta description for each page. This centralizes the logic for SEO and improves code reusability.
 - **Responsive Design:** The application is designed to be responsive and work on all devices, from desktops to mobile phones.
 - **Image Optimization:** The application uses `vite-plugin-image-optimizer` to optimize images, improving loading performance.
+- **Product Detail Pages:** Each product has its own dedicated page with detailed information, specifications, and images.
+- **Dynamic Footer:** The footer is dynamically generated and includes quick links, product links, and contact information.
 
 ## Key Components
 
 - **Header:** The header component contains the company logo, navigation links, and a call-to-action button.
-- **Footer:** The footer component contains contact information, social media links, and a sitemap.
+- **Footer:** The footer component contains contact information, social media links, and a sitemap. The "Products Link" and "Get In Touch" titles are linked to their respective pages.
 - **Product Card:** A reusable component for displaying product information in a visually appealing way.
 - **Carousel:** The application uses `react-responsive-carousel` to display a slideshow of images on the home page and product detail pages.
 
