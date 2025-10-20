@@ -85,7 +85,7 @@ function Footer() {
               <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                 <Email sx={{ mr: 1, fontSize: 18 }} /> shalakawires@gmail.com
               </Link>
-              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
+              <Typography color="inherit" sx={{ display: 'flex', alignItems: 'center' }}>
                 <Phone sx={{ mr: 1, fontSize: 18 }} />
                 <Link href="tel:+919822767618" color="inherit" sx={{textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 98227 67618</Link>,&nbsp;
                 <Link href="tel:+919158724723" color="inherit" sx={{textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 91587 24723</Link>
