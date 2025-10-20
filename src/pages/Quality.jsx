@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Typography, Container, Grid, Card, CardMedia, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { useLocation } from 'react-router-dom';
 import useTitle from '../hooks/useTitle';
 
 function Quality() {
   useTitle('Delivering Quality You Can Trust | Shalaka Wires', 'We are committed to delivering excellence. Learn about our rigorous quality control, advanced testing, and adherence to the highest industry standards for every wire product.');
   const theme = useTheme();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   const specifications = [
     { swg: 9, mm: 3.60, tolerance: 0.05 },
@@ -56,7 +68,7 @@ function Quality() {
           </Grid>
         </Grid>
 
-        <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4, color: 'primary.main', textAlign: 'center', fontWeight: 'bold' }}>
+        <Typography id="ms-wire-specs" variant="h5" component="h2" gutterBottom sx={{ mt: 4, color: 'primary.main', textAlign: 'center', fontWeight: 'bold' }}>
           MS Wire Sizes Specifications & Tolerance
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
