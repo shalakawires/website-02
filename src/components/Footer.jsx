@@ -59,7 +59,7 @@ function Footer() {
                 <QualityIcon sx={{ mr: 1, fontSize: 18 }} /> Quality
               </Link>
               <Link component={RouterLink} to="/contact" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
-                <ContactMailIcon sx={{ mr: 1, fontSize: 18 }} /> Get In Touch
+                <ContactMailIcon sx={{ mr: 1, fontSize: 18 }} /> Contact Us
               </Link>
             </Stack>
           </Grid>
@@ -81,16 +81,18 @@ function Footer() {
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
               Get In Touch
             </Typography>
-            <Stack spacing={0.5} mt={1}>
-              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
+            <Stack spacing={1} mt={1}>
+              <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                 <Email sx={{ mr: 1, fontSize: 18 }} /> shalakawires@gmail.com
-              </Typography>
+              </Link>
               <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'center' }}>
-                <Phone sx={{ mr: 1, fontSize: 18 }} /> +91 98227 67618, +91 91587 24723
+                <Phone sx={{ mr: 1, fontSize: 18 }} />
+                <Link href="tel:+919822767618" color="inherit" sx={{textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 98227 67618</Link>,&nbsp;
+                <Link href="tel:+919158724723" color="inherit" sx={{textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 91587 24723</Link>
               </Typography>
-              <Typography variant="body2" sx={{ color: "grey.400", display: 'flex', alignItems: 'flex-start', mt: 0.5 }}>
+              <Link href="https://www.google.com/maps/search/?api=1&query=Plot+No.+E-48,+Phase+II,+Add.+MIDC+Area,+Jalna,+Maharashtra" target="_blank" rel="noopener noreferrer" color="inherit" sx={{ display: 'flex', alignItems: 'flex-start', mt: 0.5, textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                 <LocationOn sx={{ mr: 1, fontSize: 18 }} /> Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
-              </Typography>
+              </Link>
             </Stack>
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold", mt: 2 }}>
               Follow Us
