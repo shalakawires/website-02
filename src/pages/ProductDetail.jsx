@@ -117,10 +117,14 @@ const productSpecifications = {
 
 function ProductDetail() {
   const { productName } = useParams();
-  const decodedProductName = decodeURIComponent(productName);
-  const product = productSpecifications[decodedProductName];
+  const formattedProductName = productName
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 
-  useTitle(product ? `High-Quality ${decodedProductName} | Shalaka Wires` : 'Product Not Found', product ? `Get the best ${decodedProductName} from Shalaka Wires. Known for its durability and performance, our wire meets the highest standards. Check specifications and get a quote.` : 'The product you are looking for does not exist.');
+  const product = productSpecifications[formattedProductName];
+
+  useTitle(product ? `High-Quality ${formattedProductName} | Shalaka Wires` : 'Product Not Found', product ? `Get the best ${formattedProductName} from Shalaka Wires. Known for its durability and performance, our wire meets the highest standards. Check specifications and get a quote.` : 'The product you are looking for does not exist.');
 
   if (!product) {
     return (
@@ -134,11 +138,11 @@ function ProductDetail() {
     <Container sx={{ py: 4 }}>
       <Paper sx={{ p: 4, backgroundColor: '#f7f9fc' }}>
         <Typography variant="h3" gutterBottom sx={{ color: '#005a9e' }}>
-          {decodedProductName}
+          {formattedProductName}
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
           <Box sx={{ flex: 1 }}>
-            <img src={product.image} alt={decodedProductName} style={{ width: '100%', borderRadius: '8px' }} />
+            <img src={product.image} alt={formattedProductName} style={{ width: '100%', borderRadius: '8px' }} />
           </Box>
           <Box sx={{ flex: 1 }}>
             {product.description && (

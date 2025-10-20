@@ -1,3 +1,3 @@
 User-agent: *
-Allow: /
+Disallow:
 Sitemap: https://www.shalakawires.com/sitemap.xml

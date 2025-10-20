@@ -26,7 +26,7 @@ function Products() {
         <Grid container spacing={4} justifyContent="center">
           {products.map((product, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Link to={`/product/${encodeURIComponent(product.name)}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/product/${product.name.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
                 <Card sx={{ height: 300, width: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                   <CardMedia
                     component="img"

@@ -72,7 +72,7 @@ function Footer() {
             </Typography>
             <Stack spacing={0.5} mt={1}>
               {products.map((product) => (
-                <Link key={product.name} component={RouterLink} to={`/product/${encodeURIComponent(product.name)}`} color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                <Link key={product.name} component={RouterLink} to={`/product/${product.name.toLowerCase().replace(/\s+/g, '-')}`} color="inherit" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
                   {product.name}
                 </Link>
               ))}

@@ -170,7 +170,7 @@ function Home() {
         >
           {featuredProducts.map((product) => (
             <Box key={product.name} sx={{ p: 2 }}>
-              <Link to={`/product/${encodeURIComponent(product.name)}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/product/${product.name.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
                 <Card sx={{ height: 300, display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                   <CardMedia
                     component="img"
