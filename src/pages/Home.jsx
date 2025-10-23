@@ -48,39 +48,11 @@ const featuredProducts = [
   },
 ];
 
-const plantImages = {
-    SLM: {
-      title: "SLM",
-      images: ["/plant-images/SLM-1.jpg", "/plant-images/SLM-2.jpg", "/plant-images/SLM-3.jpg"],
-    },
-    FineWireDrawingOTO: {
-      title: "Fine Wire Drawing OTO",
-      images: ["/plant-images/Fine Wire Drawing OTO - 1.jpg", "/plant-images/Fine Wire Drawing OTO - 2.jpg", "/plant-images/Fine Wire Drawing OTO - 3.jpg"],
-    },
-    PitTypeInductionFurnace: {
-      title: "Pit Type Induction Furnace",
-      images: ["/plant-images/Induction Furnace - 1.jpg", "/plant-images/Induction Furnace - 2.jpg"],
-    },
-    NitrogenFurnace: {
-      title: "Nitrogen Furnace",
-      images: ["/plant-images/Nitrogen Furnace - 1.jpg"],
-    },
-    HighSpeedNailMachine: {
-      title: "High Speed Nail Machine",
-      images: ["/plant-images/High Speed Nail Machine - 1.jpg"],
-    },
-    AutomaticChainLinkFencingMachine: {
-      title: "Automatic Chain Link Fencing Machine",
-      images: ["/plant-images/Automatic Chain Link Fencing Machine - 1.jpg"],
-    },
-  };
-
 function Home() {
   useTitle('High-Quality MS Wire, GI Wire & MS Wire Nails Manufacturer in India | Shalaka Wires', 'Discover high-strength binding wires, durable galvanized wires, and more from a leading manufacturer. Get a quote today for your industrial needs.');
   const featuredProductsRef = useRef(null);
   const heroTextRef = useRef(null);
   const navigate = useNavigate();
-  const machines = Object.values(plantImages);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -92,10 +64,6 @@ function Home() {
       );
     }
   }, []);
-
-  const handleTitleClick = () => {
-    navigate('/about#key-machines');
-  };
 
   const renderArrowPrev = (onClickHandler, hasPrev, label) =>
     hasPrev && (
@@ -215,76 +183,6 @@ function Home() {
                     </Button>
                   </Link>
                 </Box>
-              </Card>
-            </Box>
-          ))}
-        </Carousel>
-      </Container>
-      
-      {/* Key Machines Section */}
-      <Container sx={{ py: 8, position: 'relative' }} maxWidth="lg">
-        <Link to="/about#key-machines" style={{ textDecoration: 'none' }}>
-          <Typography
-            variant="h4"
-            component="h2"
-            align="center"
-            gutterBottom
-            sx={{ fontWeight: 'bold', mb: 6, cursor: 'pointer', color: '#005a9e' }}
-          >
-            Key Machines in Our Production Process
-          </Typography>
-        </Link>
-        <Carousel
-          showArrows={true}
-          infiniteLoop={true}
-          showThumbs={false}
-          showStatus={false}
-          autoPlay={true}
-          interval={5000}
-          centerMode={!isMobile}
-          centerSlidePercentage={isMobile ? 100 : 33.33}
-          stopOnHover={true}
-          transitionTime={1000}
-          renderArrowPrev={renderArrowPrev}
-          renderArrowNext={renderArrowNext}
-          showIndicators={false}
-        >
-          {machines.map((machine) => (
-            <Box key={machine.title} sx={{ p: 2 }}>
-              <Card
-                sx={{ height: 300, display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' }, cursor: 'pointer' }}
-                onClick={handleTitleClick}
-              >
-                <Carousel
-                    showArrows={false}
-                    showThumbs={false}
-                    showStatus={false}
-                    infiniteLoop={true}
-                    autoPlay={true}
-                    interval={4000}
-                    showIndicators={false}
-                    stopOnHover={true}
-                    transitionTime={500}
-                >
-                    {machine.images.map((image, imgIndex) => (
-                        <CardMedia
-                            key={imgIndex}
-                            component="img"
-                            sx={{
-                                height: 250,
-                                objectFit: 'cover',
-                            }}
-                            image={image}
-                            alt={`${machine.title} ${imgIndex + 1}`}
-                            loading="lazy"
-                        />
-                    ))}
-                </Carousel>
-                <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-                  <Typography gutterBottom variant="h6" component="h3" textAlign="center">
-                    {machine.title}
-                  </Typography>
-                </CardContent>
               </Card>
             </Box>
           ))}

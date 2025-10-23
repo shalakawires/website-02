@@ -59,3 +59,28 @@ export default useTitle;
 ```
 
 This hook is a more efficient and centralized way to manage page metadata compared to using a third-party library like `react-helmet-async`.
+
+---
+
+## **Current Plan: Remove "Key Machines" Feature**
+
+### **Overview**
+This update removes the "Key Machines in Our Production Process" section from the application. This includes the carousel on the home page and the detailed section on the "About Us" page. The goal is to simplify the user interface and remove potentially outdated information.
+
+### **Steps Taken**
+
+1.  **Modified `src/pages/Home.jsx`:**
+    *   Removed the `plantImages` object containing the machine data.
+    *   Removed the entire "Key Machines Section" JSX, including the `Carousel` component that displayed the machine images.
+    *   Removed the `handleTitleClick` function which was navigating to the about page section.
+
+2.  **Modified `src/pages/About.jsx`:**
+    *   Removed the `plantImages` object.
+    *   Removed the entire `Box` element with the `id="key-machines"` that rendered the machine details.
+    *   Removed the `keyMachinesRef` ref.
+
+3.  **Deleted Image Assets:**
+    *   Removed image files from the `public/plant-images/` directory related to the key machines.
+
+### **Outcome**
+The "Key Machines" feature has been completely removed from the application codebase and assets. The home and about pages have been updated to reflect this change.
