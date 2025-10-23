@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton, useMediaQuery } from '@mui/material';
+import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton, useMediaQuery, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -7,6 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { gsap } from 'gsap';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import useTitle from '../hooks/useTitle';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const featuredProducts = [
   {
@@ -124,6 +125,7 @@ function Home() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          flexDirection: 'column',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -134,7 +136,7 @@ function Home() {
             backgroundImage: 'url(/factory.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.3,
+            opacity: 0.5,
             zIndex: 1,
           },
           '> *': {
@@ -143,7 +145,8 @@ function Home() {
           }
         }}
       >
-        <Container maxWidth="md" />
+        <Container maxWidth="md">
+        </Container>
       </Box>
 
       {/* Featured Products Section */}
@@ -170,8 +173,8 @@ function Home() {
         >
           {featuredProducts.map((product) => (
             <Box key={product.name} sx={{ p: 2 }}>
-              <Link to={`/product/${product.name.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
-                <Card sx={{ height: 300, display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
+              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
+                <Link to={`/product/${product.name.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <CardMedia
                     component="img"
                     sx={{
@@ -182,13 +185,37 @@ function Home() {
                     alt={product.name}
                     loading="lazy"
                   />
-                  <CardContent sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-                    <Typography variant="h6" component="h3" textAlign="center" color="text.primary">
+                  <CardContent>
+                    <Typography variant="h6" component="h3" textAlign="center">
                       {product.name}
                     </Typography>
                   </CardContent>
-                </Card>
-              </Link>
+                </Link>
+                <Box sx={{ display: 'flex', justifyContent: 'center', pb: 2, mt: 'auto' }}>
+                  <Link to="/contact" style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="contained"
+                      endIcon={<ArrowForwardIcon />}
+                      sx={{
+                        borderRadius: '50px',
+                        padding: '10px 25px',
+                        fontWeight: 'bold',
+                        color: '#fff',
+                        background: 'linear-gradient(to right, var(--secondary-grey), var(--secondary-grey-light))',
+                        boxShadow: '0 3px 5px 2px rgba(65, 64, 66, .3)',
+                        transition: 'background 0.3s, transform 0.3s, box-shadow 0.3s',
+                        '&:hover': {
+                          background: 'linear-gradient(to right, var(--secondary-grey-light), var(--secondary-grey))',
+                          transform: 'translateY(-2px)',
+                          boxShadow: '0 6px 10px 4px rgba(65, 64, 66, .3)',
+                        },
+                      }}
+                    >
+                      Request Quote
+                    </Button>
+                  </Link>
+                </Box>
+              </Card>
             </Box>
           ))}
         </Carousel>

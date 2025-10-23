@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Typography, Container, Grid, Paper, IconButton, Link } from '@mui/material';
+import { Box, Typography, Container, Grid, Paper, IconButton, Link, Button } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Facebook, Instagram, LinkedIn } from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, WhatsApp } from "@mui/icons-material";
 import XIcon from '@mui/icons-material/X';
 import useTitle from '../hooks/useTitle';
 
@@ -29,8 +29,8 @@ function Contact() {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ my: 4, textAlign: 'center' }}>
+    <Container maxWidth="lg" sx={{ py: 2 }}>
+      <Box sx={{ my: 2, textAlign: 'center' }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ color: '#005a9e' }}>
             Get in Touch
         </Typography>
@@ -45,26 +45,43 @@ function Contact() {
                   Contact Information
               </Typography>
               <Box>
+                  <Button 
+                    variant="contained" 
+                    startIcon={<WhatsApp />} 
+                    href="https://wa.me/919822767618?text=Hey%2C%20I%20have%20visited%20your%20website%20shalakawires.com%20and%20I%20would%20like%20to%20enquire%20about%20your%20products."
+                    target="_blank"
+                    sx={{
+                      mb: 3,
+                      backgroundColor: '#25D366',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      '&:hover': {
+                        backgroundColor: '#128C7E'
+                      }
+                    }}
+                  >
+                    Connect on WhatsApp
+                  </Button>
                   <Box sx={contactItemStyle}>
                       <PhoneIcon sx={iconStyle} />
                       <Box>
                           <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Phone</Typography>
-                          <Link href="tel:+919822767618" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 98227 67618</Link><br/>
-                          <Link href="tel:+919158724723" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 91587 24723</Link>
+                          <Link href="tel:+919822767618" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, fontSize: '1.1rem' }}>+91 98227 67618</Link><br/>
+                          <Link href="tel:+919158724723" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, fontSize: '1.1rem' }}>+91 91587 24723</Link>
                       </Box>
                   </Box>
                   <Box sx={contactItemStyle}>
                       <EmailIcon sx={iconStyle} />
                       <Box>
                           <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Email</Typography>
-                          <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>shalakawires@gmail.com</Link>
+                          <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, fontSize: '1.1rem' }}>shalakawires@gmail.com</Link>
                       </Box>
                   </Box>
                   <Box sx={contactItemStyle}>
                       <LocationOnIcon sx={iconStyle} />
                       <Box>
                           <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Address</Typography>
-                          <Link href="https://maps.app.goo.gl/E17aAP5yyYJAyyML8" target="_blank" rel="noopener noreferrer" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                          <Link href="https://maps.app.goo.gl/E17aAP5yyYJAyyML8" target="_blank" rel="noopener noreferrer" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' }, fontSize: '1.1rem' }}>
                           Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
                           </Link>
                       </Box>

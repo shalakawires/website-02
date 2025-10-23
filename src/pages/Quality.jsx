@@ -30,8 +30,8 @@ function Quality() {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ my: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 2 }}>
+      <Box sx={{ my: 2 }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ color: 'primary.main', textAlign: 'center' }}>
           Our Commitment to Quality
         </Typography>
@@ -51,7 +51,7 @@ function Quality() {
           unwavering commitment to excellence.
         </Typography>
 
-        <Grid container justifyContent="center" sx={{ my: 4 }}>
+        <Grid container justifyContent="center" sx={{ my: 2 }}>
           <Grid item xs={12} md={8}>
             <Card elevation={3}>
               <CardMedia
@@ -68,7 +68,7 @@ function Quality() {
           </Grid>
         </Grid>
 
-        <Typography id="ms-wire-specs" variant="h5" component="h2" gutterBottom sx={{ mt: 4, color: 'primary.main', textAlign: 'center', fontWeight: 'bold' }}>
+        <Typography id="ms-wire-specs" variant="h5" component="h2" gutterBottom sx={{ mt: 2, color: 'primary.main', textAlign: 'center', fontWeight: 'bold' }}>
           MS Wire Sizes Specifications & Tolerance
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
