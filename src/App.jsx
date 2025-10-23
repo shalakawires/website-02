@@ -12,6 +12,7 @@ const Quality = lazy(() => import('./pages/Quality'));
 const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 import logo from '/logo.png';
 
 // Create a custom theme
@@ -166,6 +167,7 @@ function App() {
                 </Routes>
               </Suspense>
             </Box>
+            <WhatsAppButton />
             <Footer />
           </Box>
         </ScrollToTop>
