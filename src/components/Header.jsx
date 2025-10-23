@@ -55,8 +55,8 @@ const Header = () => {
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: 'white', color: 'black', boxShadow: 'none', borderBottom: '1px solid #e0e0e0' }}>
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold', color: 'var(--primary-blue)' }}>
+        <Toolbar sx={{ minHeight: '28px' }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold', color: 'var(--primary-blue)', fontSize: '0.6rem' }}>
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Shalaka Wires</Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
