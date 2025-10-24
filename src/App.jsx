@@ -118,12 +118,12 @@ function App() {
         <ScrollToTop>
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <AppBar position="static" sx={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0' }}>
-              <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 2 }}>
+              <Toolbar component={Container} maxWidth="lg" sx={{ justifyContent: 'space-between', py: 1 }}>
                 <Typography variant="h6" component={RouterLink} to="/" sx={{ textDecoration: 'none', color: theme.palette.primary.main }}>
                   <Box
                     component="img"
                     sx={{
-                      height: 80,
+                      height: 60,
                       mr: 2,
                     }}
                     alt="Shalaka Wires LLP Logo"

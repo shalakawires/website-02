@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography, IconButton, Grid, Link, Stack, Divider } from "@mui/material";
-import { Facebook, Instagram, LinkedIn, Home as HomeIcon, Info as InfoIcon, Category as CategoryIcon, AssignmentTurnedIn as QualityIcon, ContactMail as ContactMailIcon, Email, Phone, LocationOn } from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, Home as HomeIcon, Info as InfoIcon, Category as CategoryIcon, AssignmentTurnedIn as QualityIcon, ContactMail as ContactMailIcon, Email, Phone, LocationOn, WhatsApp } from "@mui/icons-material";
 import XIcon from '@mui/icons-material/X';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -137,6 +137,15 @@ function Footer() {
                 sx={{ transition: "transform 0.2s", "&:hover": { transform: "scale(1.1)" } }}
               >
                 <LinkedIn />
+              </IconButton>
+              <IconButton
+                href="https://wa.me/919822767618?text=Hey%2C%20I%20have%20visited%20your%20website%20shalakawires.com%20and%20I%20would%20like%20to%20enquire%20about%20your%20products."
+                target="_blank"
+                color="inherit"
+                aria-label="WhatsApp"
+                sx={{ transition: "transform 0.2s", "&:hover": { transform: "scale(1.1)" } }}
+              >
+                <WhatsApp />
               </IconButton>
             </Stack>
           </Grid>
