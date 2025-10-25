@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Box, Typography, Container, Grid, Paper, IconButton, Link, Button, TextField, MenuItem, Divider, Checkbox, FormControlLabel } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -12,17 +13,24 @@ import { products } from '../data/products';
 function Contact() {
   useTitle('Contact Us | Shalaka Wires', "Ready to start your project? Contact Shalaka Wires today for a personalized quote or to get answers to your questions. We're here to help!");
 
+  const location = useLocation();
+  const { state: locationState } = location;
+
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
     companyName: '',
     mobile: '',
     email: '',
-    enquiryType: 'General Enquiry',
+    enquiryType: locationState?.enquiryType || 'General Enquiry',
     message: '',
   });
 
-  const [quotedProducts, setQuotedProducts] = useState({});
+  const [quotedProducts, setQuotedProducts] = useState(
+    locationState?.productId
+      ? { [locationState.productId]: { quantity: 1 } }
+      : {}
+  );
   const [errors, setErrors] = useState({});
   const form = useRef();
 

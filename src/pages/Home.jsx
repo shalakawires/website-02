@@ -65,6 +65,14 @@ function Home() {
     }
   }, []);
 
+    const handleRequestQuote = () => {
+    navigate('/contact', {
+      state: {
+        enquiryType: 'Request a Quote',
+      },
+    });
+  };
+
   const renderArrowPrev = (onClickHandler, hasPrev, label) =>
     hasPrev && (
       <IconButton onClick={onClickHandler} title={label} aria-label="Previous slide" style={{ position: 'absolute', zIndex: 2, top: 'calc(50% - 15px)', left: 15, color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
@@ -160,28 +168,27 @@ function Home() {
                   </CardContent>
                 </Link>
                 <Box sx={{ display: 'flex', justifyContent: 'center', pb: 2, mt: 'auto' }}>
-                  <Link to="/contact" style={{ textDecoration: 'none' }}>
-                    <Button
-                      variant="contained"
-                      endIcon={<ArrowForwardIcon />}
-                      sx={{
-                        borderRadius: '50px',
-                        padding: '10px 25px',
-                        fontWeight: 'bold',
-                        color: '#fff',
-                        background: 'linear-gradient(to right, var(--secondary-grey), var(--secondary-grey-light))',
-                        boxShadow: '0 3px 5px 2px rgba(65, 64, 66, .3)',
-                        transition: 'background 0.3s, transform 0.3s, box-shadow 0.3s',
-                        '&:hover': {
-                          background: 'linear-gradient(to right, var(--secondary-grey-light), var(--secondary-grey))',
-                          transform: 'translateY(-2px)',
-                          boxShadow: '0 6px 10px 4px rgba(65, 64, 66, .3)',
-                        },
-                      }}
-                    >
-                      Request Quote
-                    </Button>
-                  </Link>
+                  <Button
+                    onClick={handleRequestQuote}
+                    variant="contained"
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{
+                      borderRadius: '50px',
+                      padding: '10px 25px',
+                      fontWeight: 'bold',
+                      color: '#fff',
+                      background: 'linear-gradient(to right, var(--secondary-grey), var(--secondary-grey-light))',
+                      boxShadow: '0 3px 5px 2px rgba(65, 64, 66, .3)',
+                      transition: 'background 0.3s, transform 0.3s, box-shadow 0.3s',
+                      '&:hover': {
+                        background: 'linear-gradient(to right, var(--secondary-grey-light), var(--secondary-grey))',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 6px 10px 4px rgba(65, 64, 66, .3)',
+                      },
+                    }}
+                  >
+                    Request Quote
+                  </Button>
                 </Box>
               </Card>
             </Box>

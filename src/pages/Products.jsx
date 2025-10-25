@@ -1,12 +1,22 @@
 import React from 'react';
 import { Box, Typography, Container, Grid, Card, CardContent, CardMedia, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useTitle from '../hooks/useTitle';
 import { products } from '../data/products';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 function Products() {
   useTitle('Our Premium Product Range | Shalaka Wires', 'From construction to fencing, find the perfect wire solution. Explore our extensive product line, featuring high-quality MS wire, galvanized wire, nails, and more.');
+  const navigate = useNavigate();
+
+  const handleRequestQuote = () => {
+    navigate('/contact', {
+      state: {
+        enquiryType: 'Request a Quote',
+      },
+    });
+  };
+
   return (
     <Container maxWidth="lg" sx={{ py: 2 }}>
       <Box sx={{ my: 2 }}>
@@ -50,28 +60,27 @@ function Products() {
                   </CardContent>
                 </Link>
                 <Box sx={{ display: 'flex', justifyContent: 'center', pb: 2, mt: 'auto' }}>
-                  <Link to="/contact" style={{ textDecoration: 'none' }}>
-                    <Button
-                      variant="contained"
-                      endIcon={<ArrowForwardIcon />}
-                      sx={{
-                        borderRadius: '50px',
-                        padding: '10px 25px',
-                        fontWeight: 'bold',
-                        color: '#fff',
-                        background: 'linear-gradient(to right, var(--secondary-grey), var(--secondary-grey-light))',
-                        boxShadow: '0 3px 5px 2px rgba(65, 64, 66, .3)',
-                        transition: 'background 0.3s, transform 0.3s, box-shadow 0.3s',
-                        '&:hover': {
-                          background: 'linear-gradient(to right, var(--secondary-grey-light), var(--secondary-grey))',
-                          transform: 'translateY(-2px)',
-                          boxShadow: '0 6px 10px 4px rgba(65, 64, 66, .3)',
-                        },
-                      }}
-                    >
-                      Request Quote
-                    </Button>
-                  </Link>
+                  <Button
+                    onClick={handleRequestQuote}
+                    variant="contained"
+                    endIcon={<ArrowForwardIcon />}
+                    sx={{
+                      borderRadius: '50px',
+                      padding: '10px 25px',
+                      fontWeight: 'bold',
+                      color: '#fff',
+                      background: 'linear-gradient(to right, var(--secondary-grey), var(--secondary-grey-light))',
+                      boxShadow: '0 3px 5px 2px rgba(65, 64, 66, .3)',
+                      transition: 'background 0.3s, transform 0.3s, box-shadow 0.3s',
+                      '&:hover': {
+                        background: 'linear-gradient(to right, var(--secondary-grey-light), var(--secondary-grey))',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 6px 10px 4px rgba(65, 64, 66, .3)',
+                      },
+                    }}
+                  >
+                    Request Quote
+                  </Button>
                 </Box>
               </Card>
             </Grid>

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Box, Typography, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Button } from '@mui/material';
 import useTitle from '../hooks/useTitle';
 import { products } from '../data/products';
 
 function ProductDetail() {
   const { productName } = useParams();
+  const navigate = useNavigate();
 
   const product = products.find(p => p.name.toLowerCase().replace(/\s+/g, '-') === productName);
 
@@ -18,6 +19,15 @@ function ProductDetail() {
       </Container>
     );
   }
+
+  const handleRequestQuote = () => {
+    navigate('/contact', {
+      state: {
+        enquiryType: 'Request a Quote',
+        productId: product.id,
+      },
+    });
+  };
 
   return (
     <Container sx={{ py: 4 }}>
@@ -35,12 +45,20 @@ function ProductDetail() {
                 <Typography variant="h5" gutterBottom sx={{ color: '#414042' }}>
                   Description
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 4, textAlign: 'justify' }}>
+                <Typography variant="body1" sx={{ mb: 2, textAlign: 'justify' }}>
                   {product.description}
                 </Typography>
               </>
             )}
-            <Typography variant="h5" gutterBottom sx={{ color: '#414042' }}>
+            <Button
+              onClick={handleRequestQuote}
+              variant="contained"
+              color="primary"
+              sx={{ my: 2, fontWeight: 'bold', boxShadow: '0 4px 12px rgba(0,90,158,0.3)', '&:hover': { boxShadow: '0 6px 16px rgba(0,90,158,0.5)', transform: 'translateY(-2px)' } }}
+            >
+              Request a Quote
+            </Button>
+            <Typography variant="h5" gutterBottom sx={{ color: '#414042', mt: 2 }}>
               Specifications
             </Typography>
             <TableContainer component={Paper} sx={{ border: '1px solid #e0e0e0', boxShadow: 'none' }}>
@@ -94,7 +112,7 @@ function ProductDetail() {
         <Button
           component={Link}
           to="/products"
-          variant="contained"
+          variant="outlined"
           color="primary"
         >
           View All Products
