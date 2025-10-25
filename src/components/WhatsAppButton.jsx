@@ -24,7 +24,7 @@ function WhatsAppButton() {
         }
       }}
     >
-      Chat with us
+      WhatsApp Us
     </Button>
   );
 }

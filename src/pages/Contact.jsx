@@ -102,47 +102,6 @@ function Contact() {
             </Box>
 
             <Paper elevation={3} sx={{ p: 4, borderRadius: '16px', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 0 }}>
-                <Box sx={{ flex: 1, p: 3 }}>
-                    <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-                        Contact Information
-                    </Typography>
-                    <Box sx={contactItemStyle}>
-                        <PhoneIcon sx={iconStyle} />
-                        <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Phone</Typography>
-                            <Link href="tel:+919822767618" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 98227 67618</Link><br/>
-                            <Link href="tel:+919158724723" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 91587 24723</Link>
-                        </Box>
-                    </Box>
-                    <Box sx={contactItemStyle}>
-                        <EmailIcon sx={iconStyle} />
-                        <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Email</Typography>
-                            <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>shalakawires@gmail.com</Link>
-                        </Box>
-                    </Box>
-                    <Box sx={contactItemStyle}>
-                        <LocationOnIcon sx={iconStyle} />
-                        <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Address</Typography>
-                            <Link href="https://maps.app.goo.gl/E17aAP5yyYJAyyML8" target="_blank" rel="noopener noreferrer" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
-                                Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
-                            </Link>
-                        </Box>
-                    </Box>
-                    <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main', mt: 4 }}>
-                        Follow Us
-                    </Typography>
-                    <Box>
-                        <IconButton component="a" href="https://www.facebook.com/shalakawires" target="_blank" sx={socialIconStyle}><Facebook /></IconButton>
-                        <IconButton component="a" href="https://x.com/shalakawires" target="_blank" sx={socialIconStyle}><XIcon /></IconButton>
-                        <IconButton component="a" href="https://instagram.com/shalakawires" target="_blank" sx={socialIconStyle}><Instagram /></IconButton>
-                        <IconButton component="a" href="https://www.linkedin.com/company/shalaka-wires-llp" target="_blank" sx={socialIconStyle}><LinkedIn /></IconButton>
-                        <IconButton component="a" href="https://wa.me/919822767618?text=Hey%2C%20I%20have%20visited%20your%20website%20shalakawires.com%20and%20I%20would%20like%20to%20enquire%20about%20your%20products." target="_blank" sx={socialIconStyle}><WhatsApp /></IconButton>
-                    </Box>
-                </Box>
-
-                <Divider orientation="vertical" flexItem sx={{ display: { xs: 'none', md: 'block' } }} />
 
                 <Box sx={{ flex: 1, p: 3 }}>
                     <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main', mb: 3 }}>
@@ -186,6 +145,48 @@ function Contact() {
                             </Grid>
                         </Grid>
                     </form>
+                </Box>
+                
+                <Divider orientation="vertical" flexItem sx={{ display: { xs: 'none', md: 'block' } }} />
+
+                <Box sx={{ flex: 1, p: 3 }}>
+                    <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
+                        Contact Information
+                    </Typography>
+                    <Box sx={contactItemStyle}>
+                        <PhoneIcon sx={iconStyle} />
+                        <Box>
+                            <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Phone</Typography>
+                            <Link href="tel:+919822767618" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 98227 67618</Link><br/>
+                            <Link href="tel:+919158724723" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>+91 91587 24723</Link>
+                        </Box>
+                    </Box>
+                    <Box sx={contactItemStyle}>
+                        <EmailIcon sx={iconStyle} />
+                        <Box>
+                            <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Email</Typography>
+                            <Link href="mailto:shalakawires@gmail.com" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>shalakawires@gmail.com</Link>
+                        </Box>
+                    </Box>
+                    <Box sx={contactItemStyle}>
+                        <LocationOnIcon sx={iconStyle} />
+                        <Box>
+                            <Typography variant="h6" sx={{ fontWeight: 'medium' }}>Address</Typography>
+                            <Link href="https://maps.app.goo.gl/E17aAP5yyYJAyyML8" target="_blank" rel="noopener noreferrer" color="inherit" sx={{ textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                                Plot No. E-48, Phase II, Add. MIDC Area, Jalna, Maharashtra
+                            </Link>
+                        </Box>
+                    </Box>
+                    <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main', mt: 4 }}>
+                        Follow Us
+                    </Typography>
+                    <Box>
+                        <IconButton component="a" href="https://www.facebook.com/shalakawires" target="_blank" sx={socialIconStyle}><Facebook /></IconButton>
+                        <IconButton component="a" href="https://x.com/shalakawires" target="_blank" sx={socialIconStyle}><XIcon /></IconButton>
+                        <IconButton component="a" href="https://instagram.com/shalakawires" target="_blank" sx={socialIconStyle}><Instagram /></IconButton>
+                        <IconButton component="a" href="https://www.linkedin.com/company/shalaka-wires-llp" target="_blank" sx={socialIconStyle}><LinkedIn /></IconButton>
+                        <IconButton component="a" href="https://wa.me/919822767618?text=Hey%2C%20I%20have%20visited%20your%20website%20shalakawires.com%20and%20I%20would%20like%20to%20enquire%20about%20your%20products." target="_blank" sx={socialIconStyle}><WhatsApp /></IconButton>
+                    </Box>
                 </Box>
             </Paper>
         </Container>
