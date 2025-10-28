@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton, useMediaQuery, Button } from '@mui/material';
+import { Box, Typography, Container, Card, CardMedia, CardContent, IconButton, useMediaQuery, Button, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { gsap } from 'gsap';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { ArrowBackIos, ArrowForwardIos, Public, LocationCity } from '@mui/icons-material';
 import useTitle from '../hooks/useTitle';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -195,6 +195,30 @@ function Home() {
           ))}
         </Carousel>
       </Container>
+      
+      {/* Why Shalaka Section */}
+      <Box sx={{ py: 8, bgcolor: '#f7f7f7' }}>
+        <Container maxWidth="lg">
+          <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 4, color: '#005a9e' }}>
+            Why Shalaka?
+          </Typography>
+          <Typography variant="body1" align="center" sx={{ maxWidth: '800px', margin: 'auto', lineHeight: 1.8, fontSize: '1.1rem' }}>
+            At Shalaka Wires, we believe true strength starts from the core. With decades of expertise in the industry, we’re trusted for our unmatched consistency, durability, and precision. Every wire we craft embodies our commitment to quality, innovation, and reliability — ensuring enduring performance and strength in every application.
+          </Typography>
+        </Container>
+      </Box>
+
+      {/* Our Presence Section */}
+      <Box sx={{ py: 8 }}>
+        <Container maxWidth="lg">
+          <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 4, color: '#005a9e' }}>
+            Our Presence
+          </Typography>
+          <Typography variant="body1" align="center" sx={{ maxWidth: '800px', margin: 'auto', lineHeight: 1.8, fontSize: '1.1rem' }}>
+            Anchored by our deep-rooted presence in India, Shalaka Wires is a trusted global partner. We export our premium wire solutions worldwide, including to North America, delivering consistent quality and reliability to every client.
+          </Typography>
+        </Container>
+      </Box>
     </Box>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Box } from '@mui/material';
-import { WhatsApp } from '@mui/icons-material';
+import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { WhatsApp } from '@mui/icons-material';
 
 function WhatsAppButton() {
   return (
@@ -25,7 +25,7 @@ function WhatsAppButton() {
           color: 'white',
           fontWeight: 'bold',
           borderRadius: '50px',
-          padding: '10px 15px',
+          padding: '10px 25px',
           '&:hover': {
             backgroundColor: '#004170'
           }
@@ -43,8 +43,7 @@ function WhatsAppButton() {
           color: 'white',
           fontWeight: 'bold',
           borderRadius: '50px',
-          padding: '6px 12px',
-          fontSize: '0.8rem',
+          padding: '8px 12px',
           '&:hover': {
             backgroundColor: '#128C7E'
           }
